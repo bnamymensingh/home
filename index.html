@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা</title>
+    
+    <!-- Google Fonts: Hind Siliguri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #005A9C; /* Professional Blue */
+            --secondary-color: #007BFF;
+            --text-color: #333;
+            --bg-color: #f4f7f9;
+            --white-color: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        section {
+            background-color: var(--white-color);
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white-color);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-area .title h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .logo-area .title p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .social-media a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        .social-media a:hover {
+            color: var(--secondary-color);
+        }
+
+        #date-time {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            background-color: var(--primary-color);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            display: block;
+            color: var(--white-color);
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Main Content Area --- */
+        .main-wrapper {
+            display: flex;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        main {
+            flex: 3;
+            min-width: 0;
+        }
+        
+        aside {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 90, 156, 0.75), rgba(0, 123, 255, 0.65)), url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            color: var(--white-color);
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            color: var(--white-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Sidebar: Elected Representatives --- */
+        .representatives-list .rep-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .representatives-list .rep-card:last-child {
+            border-bottom: none;
+        }
+        .representatives-list img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-color);
+        }
+        .representatives-list .rep-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        .representatives-list .rep-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* --- Tables --- */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .data-table thead {
+            background-color: #e9ecef;
+        }
+        .data-table th {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* --- Complaint Form --- */
+        .complaint-form .form-group {
+            margin-bottom: 15px;
+        }
+        .complaint-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .complaint-form input, .complaint-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .complaint-form button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .complaint-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            padding-top: 40px;
+            margin-top: 30px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 30px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-col h3 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--white-color);
+            padding-left: 5px;
+        }
+        .footer-bottom {
+            background-color: #212529;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+            color: #adb5bd;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .logo-area .title h1 { font-size: 1.2rem; }
+            .logo-area .title p { font-size: 0.9rem; }
+            .logo-area img { height: 60px; }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-right {
+                text-align: center;
+                margin-top: 15px;
+            }
+            .main-wrapper {
+                flex-direction: column;
+            }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <!-- আপনার লোগো এখানে যুক্ত করুন -->
+                <img src="https://i.ibb.co/wJ2Qz5x/bna-logo.png" alt="BNA Logo"> 
+                <div class="title">
+                    <h1>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ)</h1>
+                    <p>ময়মনসিংহ জেলা শাখা</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="social-media">
+                    <a href="https://www.facebook.com/your-page-link" target="_blank" title="ফেসবুক"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.youtube.com/your-channel-link" target="_blank" title="ইউটিউব"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:bna.mymdist@gmail.com" title="ইমেইল"><i class="fas fa-envelope"></i></a>
+                </div>
+                <div id="date-time"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="active">প্রচ্ছদ</a></li>
+                <li><a href="#mission-vision">মিশন ও ভিশন</a></li>
+                <li><a href="#members">সদস্য তালিকা</a></li>
+                <li><a href="#committees">কমিটি</a></li>
+                <li><a href="#complaint">অভিযোগ</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+                <li><a href="#membership-form" style="background-color: #28a745;">সদস্য হোন</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-wrapper">
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <h1>বিএনএ, ময়মনসিংহ জেলা শাখায় স্বাগতম</h1>
+                <p>সেবা, একতা এবং অগ্রগতির প্রত্যয়ে আমরা ময়মনসিংহ জেলার সকল নার্সদের কল্যাণে নিবেদিত।</p>
+            </section>
+            
+            <!-- Mission & Vision Section -->
+            <section id="mission-vision">
+                <h2>মিশন ও ভিশন</h2>
+                <h3>মিশন (Mission)</h3>
+                <p>ময়মনসিংহ জেলার সকল নার্সিং পেশাজীবীদের পেশাগত মান উন্নয়ন, অধিকার প্রতিষ্ঠা, ঐক্য সুসংহত করা এবং কর্মক্ষেত্রে নিরাপদ ও সম্মানজনক পরিবেশ নিশ্চিত করা। আমরা সদস্যদের দক্ষতা বৃদ্ধি ও আধুনিক নার্সিং সেবার সাথে তাল মিলিয়ে চলার জন্য প্রয়োজনীয় প্রশিক্ষণ ও সহযোগিতার ব্যবস্থা করতে প্রতিশ্রুতিবদ্ধ।</p>
+                <h3>ভিশন (Vision)</h3>
+                <p>একটি শক্তিশালী ও ঐক্যবদ্ধ নার্সিং কমিউনিটি তৈরি করা, যেখানে প্রত্যেক সদস্য হবেন সম্মানিত, দক্ষ এবং তাঁদের অধিকার সম্পর্কে সচেতন। আমরা এমন একটি ভবিষ্যৎ দেখতে চাই যেখানে বাংলাদেশের স্বাস্থ্যসেবায় নার্সদের অবদান সর্বোচ্চ স্বীকৃতি পাবে এবং তাঁরা দেশের স্বাস্থ্যখাতের অন্যতম চালিকাশক্তি হিসেবে কাজ করবেন।</p>
+            </section>
+
+            <!-- Activities & Plans Section -->
+            <section id="activities">
+                <h2>চলমান কাজ ও ভবিষ্যৎ পরিকল্পনা</h2>
+                <h3>বর্তমান চলমান কাজ</h3>
+                <ul>
+                    <li>সদস্যদের তথ্য ডিজিটাল ডাটাবেজে অন্তর্ভুক্তি।</li>
+                    <li>মাসিক সাধারণ সভা আয়োজন এবং গুরুত্বপূর্ণ সিদ্ধান্ত গ্রহণ।</li>
+                    <li>নার্সিং দিবস উদযাপন এবং বিশেষ সেমিনারের আয়োজন।</li>
+                    <li>করোনাকালীন সময়ে সম্মুখসারির যোদ্ধাদের জন্য সুরক্ষা সামগ্রী বিতরণ।</li>
+                </ul>
+                <h3>ভবিষ্যৎ পরিকল্পনা</h3>
+                <ul>
+                    <li>সকল সদস্যদের জন্য একটি কল্যাণ তহবিল গঠন।</li>
+                    <li>তরুণ নার্সদের জন্য ক্যারিয়ার গাইডলাইন কর্মশালার আয়োজন।</li>
+                    <li>জেলা ও উপজেলা পর্যায়ে নার্সিং পেশার মানোন্নয়নে গবেষণা কার্যক্রম শুরু করা।</li>
+                    <li>একটি নিজস্ব ট্রেনিং সেন্টার স্থাপনের উদ্যোগ গ্রহণ।</li>
+                </ul>
+            </section>
+
+            <!-- Members List Section -->
+            <section id="members">
+                <h2>আমাদের সদস্যবৃন্দ</h2>
+                <p>ময়মনসিংহ জেলার বিভিন্ন স্বাস্থ্যসেবা প্রতিষ্ঠানে কর্মরত আমাদের সম্মানিত সদস্যদের তালিকা। (এখানে নমুনা হিসেবে কয়েকজনের নাম দেওয়া হলো)</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>সদস্য নম্বর</th>
+                            <th>নাম</th>
+                            <th>পদবি</th>
+                            <th>কর্মস্থল</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>১০০১</td>
+                            <td>মোছাঃ ফাতেমা খাতুন</td>
+                            <td>সিনিয়র স্টাফ নার্স</td>
+                            <td>ময়মনসিংহ মেডিকেল কলেজ হাসপাতাল</td>
+                        </tr>
+                        <tr>
+                            <td>১০০২</td>
+                            <td>মোঃ আব্দুল করিম</td>
+                            <td>নার্সিং সুপারভাইজার</td>
+                            <td>জেলা সদর হাসপাতাল, ময়মনসিংহ</td>
+                        </tr>
+                        <tr>
+                            <td>১০০৩</td>
+                            <td>সাবিনা ইয়াসমিন</td>
+                            <td>সিনিয়র স্টাফ নার্স</td>
+                            <td>কমিউনিটি বেজড মেডিকেল কলেজ</td>
+                        </tr>
+                        <tr>
+                            <td>১০০৪</td>
+                            <td>রহিম উদ্দিন</td>
+                            <td>স্টাফ নার্স</td>
+                            <td>উপজেলা স্বাস্থ্য কমপ্লেক্স, ভালুকা</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Committees Section -->
+            <section id="committees">
+                <h2>জেলা ও উপজেলা স্ট্যান্ডিং কমিটি</h2>
+                <p>সংগঠনের কার্যক্রম সুষ্ঠুভাবে পরিচালনার জন্য গঠিত বিভিন্ন কমিটির তালিকা।</p>
+                <h3>জেলা স্ট্যান্ডিং কমিটি</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>পদবি</th>
+                            <th>নাম</th>
+                            <th>যোগাযোগ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>সভাপতি</td>
+                            <td>[সভাপতির নাম]</td>
+                            <td>[মোবাইল নম্বর]</td>
+                        </tr>
+                        <tr>
+                            <td>সাধারণ সম্পাদক</td>
+                            <td>[সাধারণ সম্পাদকের নাম]</td>
+                            <td>[মোবাইল নম্বর]</td>
+                        </tr>
+                         <tr>
+                            <td>সাংগঠনিক সম্পাদক</td>
+                            <td>[সাংগঠনিক সম্পাদকের নাম]</td>
+                            <td>[মোবাইল নম্বর]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Complaint Form Section -->
+            <section id="complaint">
+                <h2>অনলাইন অভিযোগ কেন্দ্র</h2>
+                <p>আপনার যেকোনো অভিযোগ, মতামত বা পরামর্শ সরাসরি আমাদের কাছে পাঠান। আপনার পরিচয় গোপন রাখা হবে।</p>
+                <form class="complaint-form" action="mailto:bna.mymdist@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">আপনার নাম (ঐচ্ছিক)</label>
+                        <input type="text" id="name" name="নাম">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">মোবাইল/ইমেইল (ঐচ্ছিক)</label>
+                        <input type="text" id="contact" name="যোগাযোগ">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">বিষয়</label>
+                        <input type="text" id="subject" name="বিষয়" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">বিস্তারিত লিখুন</label>
+                        <textarea id="message" name="বিস্তারিত" rows="6" required></textarea>
+                    </div>
+                    <button type="submit">অভিযোগ দাখিল করুন</button>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <section class="representatives-list">
+                <h3>জেলা শাখার নির্বাচিত প্রতিনিধি</h3>
+                <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>সভাপতি</p>
+                    </div>
+                </div>
+                 <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>সহ-সভাপতি</p>
+                    </div>
+                </div>
+                 <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>সাধারণ সম্পাদক</p>
+                    </div>
+                </div>
+                <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>যুগ্ম সাধারণ সম্পাদক</p>
+                    </div>
+                </div>
+                <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>সাংগঠনিক সম্পাদক</p>
+                    </div>
+                </div>
+                 <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>কোষাধ্যক্ষ</p>
+                    </div>
+                </div>
+                 <div class="rep-card">
+                    <img src="https://via.placeholder.com/150/005A9C/FFFFFF?text=Rep" alt="প্রতিনিধির ছবি">
+                    <div class="rep-info">
+                        <h4>[প্রতিনিধির নাম]</h4>
+                        <p>প্রচার সম্পাদক</p>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div id="contact" class="footer-col">
+                <h3>আমাদের সম্পর্কে</h3>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি অরাজনৈতিক, অলাভজনক পেশাজীবী সংগঠন যা জেলার সকল নার্সদের ঐক্য, অধিকার এবং পেশাগত উন্নয়নে কাজ করে।</p>
+            </div>
+            <div class="footer-col">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul>
+                    <li><a href="#policies">আমাদের নীতিমালা</a></li>
+                    <li><a href="#constitution">গঠনতন্ত্র</a></li>
+                    <li><a href="http://www.bna.org.bd" target="_blank">বিএনএ কেন্দ্রীয় কমিটি</a></li>
+                    <li><a href="#events">কার্যক্রম ও ইভেন্টস</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ঠিকানা: [আপনার অফিসের ঠিকানা], ময়মনসিংহ।</p>
+                <p><i class="fas fa-envelope"></i> ইমেইল: bna.mymdist@gmail.com</p>
+                <p><i class="fas fa-phone"></i> ফোন: [আপনার ফোন নম্বর]</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© ২০২৪ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Live Date & Time -->
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('bn-BD', optionsDate);
+            const timeString = now.toLocaleTimeString('bn-BD');
+
+            document.getElementById('date-time').innerHTML = `${dateString} | ${timeString}`;
+        }
+
+        // Update time every second
+        setInterval(updateDateTime, 1000);
+        // Initial call
+        updateDateTime();
+    </script>
+
+</body>
+</html>
