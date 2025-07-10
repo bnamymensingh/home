@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা</title>
     
-    <!-- Google Fonts: Hind Siliguri -->
+    <!-- Google Fonts: Hind Siliguri (for headlines) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,7 +32,8 @@
         }
 
         body {
-            font-family: 'Hind Siliguri', 'Noto Sans Bengali', 'SolaimanLipi', sans-serif;
+            /* Default font set to SolaimanLipi */
+            font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.7;
@@ -44,7 +45,9 @@
             padding: 0 20px;
         }
 
+        /* Headlines set to Hind Siliguri */
         h1, h2, h3, h4 {
+            font-family: 'Hind Siliguri', sans-serif;
             color: var(--primary-color);
             font-weight: 600;
         }
@@ -123,6 +126,9 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        nav ul li {
+            position: relative; /* Needed for dropdown positioning */
+        }
         nav ul li a {
             display: block;
             color: var(--white-color);
@@ -134,6 +140,40 @@
         nav ul li a:hover, nav ul li a.active {
             background-color: var(--secondary-color);
         }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: var(--primary-color);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 100;
+            min-width: 250px;
+            list-style: none;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            overflow: hidden;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 20px;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown a i {
+            margin-left: 5px;
+            font-size: 0.8em;
+        }
+
 
         /* --- Main Content Area --- */
         .main-wrapper {
@@ -218,6 +258,7 @@
         .data-table th {
             font-weight: 600;
             color: var(--primary-color);
+            font-family: 'Hind Siliguri', sans-serif; /* Ensuring table headers are also in Hind Siliguri */
         }
 
         /* --- Complaint Form --- */
@@ -234,7 +275,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-family: 'Hind Siliguri', sans-serif;
+            font-family: 'SolaimanLipi', sans-serif;
         }
         .complaint-form button {
             background-color: var(--primary-color);
@@ -246,6 +287,7 @@
             font-size: 1rem;
             font-weight: 600;
             transition: background-color 0.3s;
+            font-family: 'Hind Siliguri', sans-serif;
         }
         .complaint-form button:hover {
             background-color: var(--secondary-color);
@@ -352,7 +394,25 @@
             <ul>
                 <li><a href="#home" class="active">প্রচ্ছদ</a></li>
                 <li><a href="#mission-vision">মিশন ও ভিশন</a></li>
-                <li><a href="#members">সদস্য তালিকা</a></li>
+                <!-- Members Dropdown Menu -->
+                <li class="dropdown">
+                    <a href="#members">সদস্য<i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#member-mym-sadar">ময়মনসিংহ সদর</a></li>
+                        <li><a href="#member-muktagacha">মুক্তাগাছা</a></li>
+                        <li><a href="#member-bhaluka">ভালুকা</a></li>
+                        <li><a href="#member-fulbaria">ফুলবাড়ীয়া</a></li>
+                        <li><a href="#member-trishal">ত্রিশাল</a></li>
+                        <li><a href="#member-gafargaon">গফরগাঁও</a></li>
+                        <li><a href="#member-nandail">নান্দাইল</a></li>
+                        <li><a href="#member-ishorganj">ঈশ্বরগঞ্জ</a></li>
+                        <li><a href="#member-gouripur">গৌরীপুর</a></li>
+                        <li><a href="#member-fulpur">ফুলপুর</a></li>
+                        <li><a href="#member-tarakanda">তারাকান্দা</a></li>
+                        <li><a href="#member-haluaghat">হালুয়াঘাট</a></li>
+                        <li><a href="#member-dhobaura">ধোবাউড়া</a></li>
+                    </ul>
+                </li>
                 <li><a href="#committees">কমিটি</a></li>
                 <li><a href="#complaint">অভিযোগ</a></li>
                 <li><a href="#contact">যোগাযোগ</a></li>
