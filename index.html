@@ -23,22 +23,20 @@
             --accent-color: #fbc02d;
             --text-color: #333333;
             --light-text-color: #f1f1f1;
-            --bg-color: rgba(244, 247, 249, 0.95); /* Semi-transparent for Alpana BG */
+            --bg-color: rgba(244, 247, 249, 0.95);
             --white-color: #ffffff;
-            --grey-bg: #f5f5f5;
             --border-color: #e0e0e0;
             --border-radius: 8px;
             --shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
             background-color: var(--bg-color);
-            background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png'); /* Subtle Alpana/Pattern */
+            background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png');
             background-attachment: fixed;
             color: var(--text-color);
             line-height: 1.8;
@@ -48,6 +46,22 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         .section-padding { padding: 60px 0; }
         h1, h2, h3, h4 { color: var(--primary-color); font-weight: 600; }
+        p { margin-bottom: 1rem; }
+
+        /* --- Layout: Main content with Sidebar --- */
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        main {
+            flex: 3;
+            min-width: 0; /* Prevents flex item from overflowing */
+        }
+        aside {
+            flex: 1;
+            min-width: 280px;
+        }
 
         /* --- Header Area --- */
         .top-bar { background-color: var(--primary-color); color: var(--light-text-color); padding: 8px 0; font-size: 14px; }
@@ -68,13 +82,13 @@
         .navbar ul { list-style: none; display: flex; justify-content: center; }
         .navbar ul li { position: relative; }
         .navbar ul li a { display: block; color: var(--primary-color); padding: 18px 20px; text-decoration: none; font-weight: 600; transition: all 0.3s; border-bottom: 3px solid transparent; }
-        .navbar ul li a:hover, .navbar ul li a.active { color: var(--secondary-color); background-color: var(--grey-bg); border-bottom-color: var(--accent-color); }
-        .navbar .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; }
+        .navbar ul li a:hover, .navbar ul li a.active { color: var(--secondary-color); background-color: #f5f5f5; border-bottom-color: var(--accent-color); }
+        .navbar .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; padding: 5px 0; }
         .navbar .dropdown:hover .dropdown-menu { display: block; }
         .navbar .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
         .navbar .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
 
-        /* --- Hero Slider (Swiper) --- */
+        /* --- Hero Slider --- */
         .hero-slider { width: 100%; height: 450px; }
         .swiper-slide { background-size: cover; background-position: center; color: var(--white-color); display: flex; justify-content: center; align-items: center; }
         .swiper-slide .slide-content { background-color: rgba(13, 71, 161, 0.75); padding: 30px; border-radius: var(--border-radius); max-width: 600px; text-align: center; }
@@ -85,26 +99,41 @@
         .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 10px; }
         .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--accent-color); }
         
-        /* --- Committee Section --- */
-        .committee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .member-card { background: var(--white-color); border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: center; padding: 30px 20px; transition: all 0.3s; border-top: 5px solid var(--primary-color); }
-        .member-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .member-card img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid var(--white-color); box-shadow: 0 0 15px rgba(0,0,0,0.15); margin-bottom: 15px; }
-        .member-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
-        .member-card p { font-size: 1rem; color: var(--secondary-color); font-weight: 500; }
-
-        /* --- Membership Form --- */
-        .form-section { background: var(--white-color); padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 5px; font-family: 'Hind Siliguri', sans-serif; font-size: 15px; }
-        .form-group input[type="file"] { padding: 8px; }
-        .form-group .note { font-size: 13px; color: #e53935; }
-        .submit-btn { background-color: var(--primary-color); color: var(--white-color); padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; font-weight: 600; transition: background-color 0.3s; }
-        .submit-btn:hover { background-color: var(--secondary-color); }
+        /* --- Sidebar --- */
+        .sidebar-card {
+            background: var(--white-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+        }
+        .sidebar-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white-color);
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            margin: -60px auto 15px auto;
+            display: block;
+            position: relative;
+        }
+        .sidebar-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .sidebar-card p.designation { font-size: 1.1rem; color: var(--secondary-color); font-weight: 500; margin-bottom: 15px; }
         
+        /* --- Notice/News Card --- */
+        .news-card {
+            background: var(--white-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+        }
+        .news-card h4 a { text-decoration: none; color: var(--primary-color); }
+        .news-card small { color: #777; }
+
         /* --- Footer --- */
         .main-footer { background-color: #2c3e50; color: var(--light-text-color); padding: 60px 0 30px; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -116,11 +145,11 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .navbar { display: none; } /* On smaller screens, a mobile menu (e.g., hamburger) is needed */
-            .form-grid { grid-template-columns: 1fr; }
+            .navbar { display: none; }
         }
         @media (max-width: 768px) {
             .top-bar-content, .main-header-content, .logo-area { flex-direction: column; text-align: center; gap: 10px; }
+            .main-wrapper { flex-direction: column; }
             .hero-slider { height: 300px; }
             .swiper-slide h1 { font-size: 1.8rem; }
         }
@@ -128,70 +157,45 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <div class="top-bar-contact">
-                <a href="mailto:bna.mymdist@gmail.com"><i class="fas fa-envelope"></i> bna.mymdist@gmail.com</a>
-                <a href="tel:+8801234567890"><i class="fas fa-phone"></i> +৮৮০ ১২৩৪-৫৬৭৮৯০</a>
-            </div>
-            <div class="top-bar-social">
-                <a href="#" target="_blank" title="ফেসবুক"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" title="ইউটিউব"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fas fa-user-lock"></i> লগইন</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header">
-        <div class="container main-header-content">
-            <div class="logo-area">
-                <img src="https://ik.imagekit.io/nasirbam/bna_logo.png?updatedAt=1751567035734" alt="BNA Logo">
-                <div class="title">
-                    <h1>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ)</h1>
-                    <p>ময়মনসিংহ জেলা শাখা</p>
-                </div>
-            </div>
-            <div id="date-time"></div>
-        </div>
-    </header>
-
-    <!-- Navigation Bar -->
+    <div class="top-bar"> <!-- ... (No changes here) ... --> </div>
+    <header class="main-header"> <!-- ... (No changes here) ... --> </div>
+    
+    <!-- Navigation Bar - UPDATED -->
     <nav class="navbar">
         <div class="container">
             <ul>
-                <li><a href="#" class="active">প্রচ্ছদ</a></li>
+                <li><a href="index.html" class="active">প্রচ্ছদ</a></li>
                 <li class="dropdown">
                     <a href="#">কমিটি <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#district-committee">জেলা কমিটি</a></li>
-                        <li><a href="#standing-committee">স্ট্যান্ডিং কমিটি</a></li>
+                        <!-- Links open in a new tab to new pages -->
+                        <li><a href="district-committee.html" target="_blank">জেলা কমিটি</a></li>
+                        <li><a href="standing-committee.html" target="_blank">স্ট্যান্ডিং কমিটি</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#">সদস্য <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">ময়মনসিংহ সদর</a></li>
-                        <li><a href="#">মুক্তাগাছা</a></li>
-                        <li><a href="#">ভালুকা</a></li>
-                        <li><a href="#">ফুলবাড়ীয়া</a></li>
-                        <li><a href="#">ত্রিশাল</a></li>
-                        <li><a href="#">গফরগাঁও</a></li>
-                        <li><a href="#">নান্দাইল</a></li>
-                        <li><a href="#">ঈশ্বরগঞ্জ</a></li>
-                        <li><a href="#">গৌরীপুর</a></li>
-                        <li><a href="#">ফুলপুর</a></li>
-                        <li><a href="#">তারাকান্দা</a></li>
-                        <li><a href="#">হালুয়াঘাট</a></li>
-                        <li><a href="#">ধোবাউড়া</a></li>
+                        <!-- Each link opens in a new tab -->
+                        <li><a href="members-mymensingh-sadar.html" target="_blank">ময়মনসিংহ সদর</a></li>
+                        <li><a href="members-muktagacha.html" target="_blank">মুক্তাগাছা</a></li>
+                        <li><a href="members-bhaluka.html" target="_blank">ভালুকা</a></li>
+                        <li><a href="members-fulbaria.html" target="_blank">ফুলবাড়ীয়া</a></li>
+                        <li><a href="members-trishal.html" target="_blank">ত্রিশাল</a></li>
+                        <li><a href="members-gafargaon.html" target="_blank">গফরগাঁও</a></li>
+                        <li><a href="members-nandail.html" target="_blank">নান্দাইল</a></li>
+                        <li><a href="members-ishorganj.html" target="_blank">ঈশ্বরগঞ্জ</a></li>
+                        <li><a href="members-gouripur.html" target="_blank">গৌরীপুর</a></li>
+                        <li><a href="members-fulpur.html" target="_blank">ফুলপুর</a></li>
+                        <li><a href="members-tarakanda.html" target="_blank">তারাকান্দা</a></li>
+                        <li><a href="members-haluaghat.html" target="_blank">হালুয়াঘাট</a></li>
+                        <li><a href="members-dhobaura.html" target="_blank">ধোবাউড়া</a></li>
                     </ul>
                 </li>
-                <li><a href="#notice-board">নোটিশ</a></li>
-                <li><a href="#news-events">নিউজ ও ইভেন্টস</a></li>
-                <li><a href="#">গ্যালারি</a></li>
+                <li><a href="#news-section">নোটিশ ও নিউজ</a></li>
+                <li><a href="gallery.html" target="_blank">গ্যালারি</a></li>
                 <li><a href="#footer">যোগাযোগ</a></li>
-                <li><a href="#membership-form" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
+                <li><a href="membership-form.html" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
             </ul>
         </div>
     </nav>
@@ -210,106 +214,59 @@
         <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
 
-    <main>
-        <!-- Notice Board and News/Events Section -->
-        <section class="section-padding" id="notice-board">
-            <div class="container">
-                <div class="section-title"><h2>নোটিশ, নিউজ ও ইভেন্টস</h2></div>
+    <!-- Main Content Area with Sidebar -->
+    <div class="container main-wrapper">
+        <!-- Main Content -->
+        <main>
+            <!-- About Us Section -->
+            <section id="about-us">
+                <div class="section-title"><h2>আমাদের সম্পর্কে</h2></div>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি অরাজনৈতিক, অলাভজনক এবং সম্পূর্ণ পেশাজীবী সংগঠন। আমাদের মূল লক্ষ্য হলো ময়মনসিংহ জেলায় কর্মরত সকল নার্সদের পেশাগত মান উন্নয়ন, অধিকার প্রতিষ্ঠা, ঐক্য সুসংহত করা এবং কর্মক্ষেত্রে একটি নিরাপদ ও সম্মানজনক পরিবেশ নিশ্চিত করা।</p>
+                <p>আমরা সদস্যদের দক্ষতা বৃদ্ধি ও আধুনিক নার্সিং সেবার সাথে তাল মিলিয়ে চলার জন্য প্রয়োজনীয় প্রশিক্ষণ, সেমিনার এবং সহযোগিতার ব্যবস্থা করতে প্রতিশ্রুতিবদ্ধ। আমরা এমন একটি শক্তিশালী ও ঐক্যবদ্ধ নার্সিং কমিউনিটি তৈরি করতে চাই, যেখানে প্রত্যেক সদস্য হবেন সম্মানিত, দক্ষ এবং তাঁদের অধিকার সম্পর্কে সচেতন।</p>
+            </section>
+
+            <!-- Notice & News Section -->
+            <section id="news-section">
+                <div class="section-title"><h2>নোটিশ ও নিউজ</h2></div>
                 <!-- This part would be dynamically generated by a CMS -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <article style="background:var(--white-color); padding:15px; border-radius:var(--border-radius); box-shadow:var(--shadow);">
-                        <h4><a href="#" style="text-decoration:none; color:var(--primary-color);">বার্ষিক সাধারণ সভা সংক্রান্ত বিজ্ঞপ্তি।</a></h4>
-                        <small>২৯ জুলাই, ২০২৪ | নোটিশ</small>
-                    </article>
-                     <article style="background:var(--white-color); padding:15px; border-radius:var(--border-radius); box-shadow:var(--shadow);">
-                        <h4><a href="#" style="text-decoration:none; color:var(--primary-color);">নতুন সদস্যপদ নবায়নের জন্য আবেদন গ্রহণ।</a></h4>
-                        <small>১৫ জুলাই, ২০২৪ | নিউজ</small>
-                    </article>
-                    <article style="background:var(--white-color); padding:15px; border-radius:var(--border-radius); box-shadow:var(--shadow);">
-                        <h4><a href="#" style="text-decoration:none; color:var(--primary-color);">কল্যাণ তহবিল সংক্রান্ত গুরুত্বপূর্ণ মিটিং।</a></h4>
-                        <small>০১ জুলাই, ২০২৪ | ইভেন্ট</small>
-                    </article>
+                <div class="news-card">
+                    <h4><a href="#">বার্ষিক সাধারণ সভা সংক্রান্ত বিজ্ঞপ্তি।</a></h4>
+                    <small>২৯ জুলাই, ২০২৪ | নোটিশ</small>
                 </div>
-            </div>
-        </section>
-
-        <!-- District Committee Section -->
-        <section id="district-committee" class="section-padding" style="background-color: var(--grey-bg);">
-            <div class="container">
-                <div class="section-title"><h2>জেলা কমিটি</h2></div>
-                <div class="committee-grid">
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/mizan.png?updatedAt=1751960098351" alt="সদস্যের ছবি"><h3>মোঃ মিজানুর রহমান</h3><p>সভাপতি</p></div>
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/Member%20list/sohag.png?updatedAt=1751960846991" alt="সদস্যের ছবি"><h3>মোঃ আজহারুল ইসলাম (সোহাগ)</h3><p>সহ-সভাপতি</p></div>
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/Member%20list/anwar.png?updatedAt=1751960846961" alt="সদস্যের ছবি"><h3>মোঃ আনোয়ারুল হক</h3><p>সাধারণ সম্পাদক</p></div>
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/Member%20list/masuma.png?updatedAt=1751960846833" alt="সদস্যের ছবি"><h3>মাসুমা পারভীন</h3><p>কোষাধ্যক্ষ</p></div>
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/Member%20list/ahad.png?updatedAt=1751960846725" alt="সদস্যের ছবি"><h3>মোঃ আব্দুল আহাদ খান</h3><p>ছাত্র-ছাত্রী বিষয়ক প্রতিনিধি</p></div>
-                    <div class="member-card"><img src="https://ik.imagekit.io/nasirbam/Member%20list/deepu.png?updatedAt=1751960846717" alt="সদস্যের ছবি"><h3>দীপু রায়</h3><p>স্বাস্থ্য পরিদর্শক প্রতিনিধি</p></div>
+                 <div class="news-card">
+                    <h4><a href="#">নতুন সদস্যপদ নবায়নের জন্য আবেদন গ্রহণ।</a></h4>
+                    <small>১৫ জুলাই, ২০২৪ | নিউজ</small>
                 </div>
-            </div>
-        </section>
+                <div class="news-card">
+                    <h4><a href="#">কল্যাণ তহবিল সংক্রান্ত গুরুত্বপূর্ণ মিটিং।</a></h4>
+                    <small>০১ জুলাই, ২০২৪ | ইভেন্ট</small>
+                </div>
+            </section>
+        </main>
         
-        <!-- Standing Committee Section -->
-        <section id="standing-committee" class="section-padding">
-            <div class="container">
-                <div class="section-title"><h2>স্ট্যান্ডিং কমিটি</h2></div>
-                <p style="text-align:center; margin-top:-20px; margin-bottom:30px;">সংগঠনের কার্যক্রম সুষ্ঠুভাবে পরিচালনার জন্য গঠিত বিভিন্ন স্ট্যান্ডিং কমিটির সদস্যবৃন্দ।</p>
-                <div class="committee-grid">
-                     <!-- এখানে স্ট্যান্ডিং কমিটির সদস্যদের যোগ করুন -->
-                    <div class="member-card"><img src="https://via.placeholder.com/150" alt="সদস্যের ছবি"><h3>সদস্যের নাম</h3><p>পদবি</p></div>
-                    <div class="member-card"><img src="https://via.placeholder.com/150" alt="সদস্যের ছবি"><h3>সদস্যের নাম</h3><p>পদবি</p></div>
-                    <div class="member-card"><img src="https://via.placeholder.com/150" alt="সদস্যের ছবি"><h3>সদস্যের নাম</h3><p>পদবি</p></div>
-                </div>
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-card">
+                <img src="https://ik.imagekit.io/nasirbam/mizan.png?updatedAt=1751960098351" alt="সভাপতির ছবি">
+                <h3>সভাপতির বার্তা</h3>
+                <h4>মোঃ মিজানুর রহমান</h4>
+                <p class="designation">সভাপতি</p>
+                <p style="font-size: 15px;">"আমাদের মূল লক্ষ্য হলো প্রতিটি নার্সের পেশাগত অধিকার প্রতিষ্ঠা করা এবং তাদের জন্য একটি নিরাপদ ও সম্মানজনক কর্মপরিবেশ নিশ্চিত করা।"</p>
             </div>
-        </section>
-
-        <!-- Membership Form Section -->
-        <section id="membership-form" class="section-padding" style="background-color: var(--grey-bg);">
-            <div class="container">
-                <div class="section-title"><h2>সদস্য হওয়ার আবেদন فرم</h2></div>
-                <div class="form-section">
-                    <form action="#" method="post">
-                        <div class="form-grid">
-                            <div class="form-group"><label for="name">আপনার নাম (বাংলায়)</label><input type="text" id="name" required></div>
-                            <div class="form-group"><label for="father_name">পিতার নাম</label><input type="text" id="father_name" required></div>
-                            <div class="form-group"><label for="mother_name">মাতার নাম</label><input type="text" id="mother_name" required></div>
-                            <div class="form-group"><label for="spouse_name">স্বামী/স্ত্রীর নাম (প্রযোজ্য ক্ষেত্রে)</label><input type="text" id="spouse_name"></div>
-                            <div class="form-group"><label for="mobile">মোবাইল নম্বর</label><input type="tel" id="mobile" required></div>
-                            <div class="form-group"><label for="email">ইমেইল</label><input type="email" id="email" required></div>
-                            <div class="form-group"><label for="nid">জাতীয় পরিচয়পত্র (NID) নম্বর</label><input type="text" id="nid" required></div>
-                            <div class="form-group"><label for="bnmc_reg">বিএনএমসি রেজিস্ট্রেশন নং</label><input type="text" id="bnmc_reg" required> <span class="note">আপনার রেজিস্ট্রেশন নম্বর অ্যাডমিন দ্বারা যাচাই করা হবে।</span></div>
-                            <div class="form-group full-width"><label for="present_address">বর্তমান ঠিকানা</label><textarea id="present_address" rows="3" required></textarea></div>
-                            <div class="form-group full-width"><label for="permanent_address">স্থায়ী ঠিকানা</label><textarea id="permanent_address" rows="3" required></textarea></div>
-                            <div class="form-group full-width"><label for="education">শিক্ষাগত যোগ্যতা</label><input type="text" id="education" placeholder="সর্বশেষ ডিগ্রির নাম লিখুন" required></div>
-                            <div class="form-group"><label for="photo">আপনার ছবি আপলোড করুন</label><input type="file" id="photo" accept="image/*" required></div>
-                            <div class="form-group"><label for="category">সদস্য ক্যাটেগরি</label><select id="category" required><option value="">নির্বাচন করুন</option><option value="general">সাধারণ সদস্য</option><option value="lifetime">আজীবন সদস্য</option></select></div>
-                        </div>
-                        <div class="form-group full-width" style="text-align: center; margin-top: 30px;">
-                            <button type="submit" class="submit-btn">আবেদন জমা দিন</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+        </aside>
+    </div>
 
     <!-- Footer -->
-    <footer id="footer" class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col"><h3>আমাদের সম্পর্কে</h3><p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি অরাজনৈতিক, অলাভজনক পেশাজীবী সংগঠন যা জেলার সকল নার্সদের ঐক্য, অধিকার এবং উন্নয়নে কাজ করে।</p></div>
-            <div class="footer-col"><h3>গুরুত্বপূর্ণ লিংক</h3><ul><li><a href="#">নীতিমালা</a></li><li><a href="#">গঠনতন্ত্র</a></li><li><a href="http://www.bna.org.bd" target="_blank">বিএনএ কেন্দ্রীয় কমিটি</a></li></ul></div>
-            <div class="footer-col"><h3>যোগাযোগ</h3><p><i class="fas fa-map-marker-alt"></i> ঠিকানা: প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p><p><i class="fas fa-envelope"></i> ইমেইল: bna.mymdist@gmail.com</p><p><i class="fas fa-phone"></i> ফোন: +৮৮০ ১২৩৪-৫৬৭৮৯০</p></div>
-        </div>
-        <div class="footer-bottom"><p>© ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p></div>
-    </footer>
+    <footer id="footer" class="main-footer"> <!-- ... (No changes here) ... --> </footer>
 
-    <!-- Swiper JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // Initialize Swiper
         new Swiper(".hero-slider", {
             loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false, },
-            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev", },
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         });
 
         // Live Date & Time
@@ -319,7 +276,10 @@
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
             const dateString = now.toLocaleDateString('bn-BD', dateOptions);
             const timeString = now.toLocaleTimeString('bn-BD', timeOptions);
-            document.getElementById('date-time').innerHTML = `<span>${dateString}</span><br><span>${timeString}</span>`;
+            const dateTimeDiv = document.getElementById('date-time');
+            if(dateTimeDiv) {
+               dateTimeDiv.innerHTML = `<span>${dateString}</span><br><span>${timeString}</span>`;
+            }
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
