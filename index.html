@@ -31,12 +31,17 @@
             box-sizing: border-box;
         }
 
+        /* 
+           Default font set to SuttonyMJ. 
+           NOTE: SuttonyMJ must be installed on the user's computer to display correctly.
+           SolaimanLipi is used as a fallback font.
+        */
         body {
-            /* Default font set to SolaimanLipi */
-            font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
+            font-family: 'SuttonyMJ', 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.7;
+            font-size: 18px; /* SuttonyMJ may require a slightly larger base font size */
         }
 
         .container {
@@ -91,7 +96,7 @@
             margin: 0;
         }
         .logo-area .title p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin: 0;
             color: var(--text-color);
         }
@@ -135,6 +140,7 @@
             padding: 15px 20px;
             text-decoration: none;
             font-weight: 500;
+            font-family: 'Hind Siliguri', sans-serif; /* Using a web-safe font for navigation */
             transition: background-color 0.3s;
         }
         nav ul li a:hover, nav ul li a.active {
@@ -154,6 +160,7 @@
             list-style: none;
             border-radius: 0 0 var(--border-radius) var(--border-radius);
             overflow: hidden;
+            padding: 0;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -169,7 +176,7 @@
             background-color: var(--secondary-color);
         }
 
-        .dropdown a i {
+        .dropdown > a i {
             margin-left: 5px;
             font-size: 0.8em;
         }
@@ -211,7 +218,7 @@
             margin: 0 auto;
         }
 
-        /* --- Sidebar: Elected Representatives --- */
+        /* --- Sidebar: Elected Representatives (District Committee) --- */
         .representatives-list .rep-card {
             display: flex;
             align-items: center;
@@ -258,7 +265,7 @@
         .data-table th {
             font-weight: 600;
             color: var(--primary-color);
-            font-family: 'Hind Siliguri', sans-serif; /* Ensuring table headers are also in Hind Siliguri */
+            font-family: 'Hind Siliguri', sans-serif;
         }
 
         /* --- Complaint Form --- */
@@ -275,7 +282,8 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-family: 'SolaimanLipi', sans-serif;
+            font-family: 'SuttonyMJ', 'SolaimanLipi', sans-serif;
+            font-size: 16px;
         }
         .complaint-form button {
             background-color: var(--primary-color);
@@ -320,6 +328,7 @@
         }
         .footer-col ul {
             list-style: none;
+            padding: 0;
         }
         .footer-col ul li {
             margin-bottom: 10px;
@@ -370,7 +379,6 @@
     <header>
         <div class="container header-content">
             <div class="logo-area">
-                <!-- আপনার লোগো এখানে যুক্ত করুন -->
                 <img src="https://ik.imagekit.io/nasirbam/bna_logo.png?updatedAt=1751567035734" alt="BNA Logo"> 
                 <div class="title">
                     <h1>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ)</h1>
@@ -394,7 +402,7 @@
             <ul>
                 <li><a href="#home" class="active">প্রচ্ছদ</a></li>
                 <li><a href="#mission-vision">মিশন ও ভিশন</a></li>
-                <!-- Members Dropdown Menu -->
+                <!-- Members Dropdown -->
                 <li class="dropdown">
                     <a href="#members">সদস্য<i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
@@ -413,7 +421,14 @@
                         <li><a href="#member-dhobaura">ধোবাউড়া</a></li>
                     </ul>
                 </li>
-                <li><a href="#committees">কমিটি</a></li>
+                <!-- Committee Dropdown -->
+                <li class="dropdown">
+                    <a href="#">কমিটি<i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#district-committee">জেলা কমিটি</a></li>
+                        <li><a href="#standing-committee">স্ট্যান্ডিং কমিটি</a></li>
+                    </ul>
+                </li>
                 <li><a href="#complaint">অভিযোগ</a></li>
                 <li><a href="#contact">যোগাযোগ</a></li>
                 <li><a href="#membership-form" style="background-color: #28a745;">সদস্য হোন</a></li>
@@ -475,25 +490,25 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>১০০১</td>
+                            <td>1001</td>
                             <td>নাম</td>
                             <td>সিনিয়র স্টাফ নার্স</td>
                             <td>ময়মনসিংহ মেডিকেল কলেজ হাসপাতাল</td>
                         </tr>
                         <tr>
-                            <td>১০০২</td>
+                            <td>1002</td>
                             <td>নাম</td>
                             <td>নার্সিং সুপারভাইজার</td>
                             <td>জেলা সদর হাসপাতাল, ময়মনসিংহ</td>
                         </tr>
                         <tr>
-                            <td>১০০৩</td>
+                            <td>1003</td>
                             <td>নাম</td>
                             <td>সিনিয়র স্টাফ নার্স</td>
                             <td>কমিউনিটি বেজড মেডিকেল কলেজ</td>
                         </tr>
                         <tr>
-                            <td>১০০৪</td>
+                            <td>1004</td>
                             <td>নাম</td>
                             <td>স্টাফ নার্স</td>
                             <td>উপজেলা স্বাস্থ্য কমপ্লেক্স, ভালুকা</td>
@@ -502,11 +517,10 @@
                 </table>
             </section>
 
-            <!-- Committees Section -->
-            <section id="committees">
-                <h2>জেলা ও উপজেলা স্ট্যান্ডিং কমিটি</h2>
-                <p>সংগঠনের কার্যক্রম সুষ্ঠুভাবে পরিচালনার জন্য গঠিত বিভিন্ন কমিটির তালিকা।</p>
-                <h3>জেলা স্ট্যান্ডিং কমিটি</h3>
+            <!-- Standing Committees Section -->
+            <section id="standing-committee">
+                <h2>স্ট্যান্ডিং কমিটি</h2>
+                <p>সংগঠনের কার্যক্রম সুষ্ঠুভাবে পরিচালনার জন্য গঠিত বিভিন্ন স্ট্যান্ডিং কমিটির তালিকা।</p>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -564,8 +578,9 @@
 
         <!-- Sidebar -->
         <aside>
-            <section class="representatives-list">
-                <h3>জেলা শাখার নির্বাচিত প্রতিনিধি</h3>
+            <!-- District Committee Section -->
+            <section class="representatives-list" id="district-committee">
+                <h3>জেলা কমিটি</h3>
                 <div class="rep-card">
                     <img src="https://ik.imagekit.io/nasirbam/mizan.png?updatedAt=1751960098351" alt="প্রতিনিধির ছবি">
                     <div class="rep-info">
@@ -632,13 +647,13 @@
             </div>
             <div class="footer-col">
                 <h3>যোগাযোগ</h3>
-                <p><i class="fas fa-map-marker-alt"></i> ঠিকানা: প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
+                <p><i class="fas fa-map-marker-alt"></i> ঠিকানা: প্রশাসনিক ভবন (3য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
                 <p><i class="fas fa-envelope"></i> ইমেইল: bna.mymdist@gmail.com</p>
                 <p><i class="fas fa-phone"></i> ফোন: +8800000000000 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p>
+            <p>© 2025 | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p>
         </div>
     </footer>
 
@@ -647,16 +662,29 @@
         function updateDateTime() {
             const now = new Date();
             const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            // Using English numbers for time as Bengali numbers can sometimes be problematic in JS date-time
             const dateString = now.toLocaleDateString('bn-BD', optionsDate);
-            const timeString = now.toLocaleTimeString('bn-BD');
+            const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
 
-            document.getElementById('date-time').innerHTML = `${dateString} | ${timeString}`;
+            const bnNumbers = { '0': '০', '1': '১', '2': '২', '3': '৩', '4': '৪', '5': '৫', '6': '৬', '7': '৭', '8': '৮', '9': '৯' };
+            const timeStringBn = timeString.replace(/[0-9]/g, (match) => bnNumbers[match]);
+
+            document.getElementById('date-time').innerHTML = `${dateString} | ${timeStringBn}`;
         }
 
-        // Update time every second
         setInterval(updateDateTime, 1000);
-        // Initial call
         updateDateTime();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
     </script>
 
 </body>
