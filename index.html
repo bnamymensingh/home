@@ -252,7 +252,74 @@
 
            
         </main>
-        
+        <!-- === আমাদের সম্পর্কে সেকশন শেষ === -->
+
+<!-- === ব্লগ পোস্ট সেকশন শুরু === -->
+<section id="blog-posts">
+  <div class="container">
+    <h2>সাম্প্রতিক ব্লগ পোস্ট</h2>
+
+    <!-- পোস্ট ১ -->
+    <article class="blog-card">
+      <h3>নার্সিংয়ের আধুনিক চ্যালেঞ্জ ও সম্ভাবনা</h3>
+      <p class="meta">লেখক: জন Doe • তারিখ: ১৬ সেপ্টেম্বর, ২০২৫</p>
+      <p>নার্সিং পেশায় আজকের দিনে অনেক পরিবর্তন এসেছে। রোগীর যত্ন, প্রযুক্তির ব্যবহার, পরিচ্ছন্নতা ও রোগ সংক্রমণ নিয়ন্ত্রণ — এই সমস্ত ক্ষেত্রে আরও সচেতন হতে হবে।</p>
+      <a href="blog/nursing-challenges.html" class="read-more">আরও পড়ুন →</a>
+    </article>
+
+    <!-- পোস্ট ২ -->
+    <article class="blog-card">
+      <h3>সম্মান ও নিরাপত্তা: নার্সদের জন্য অপরিহার্য বিষয়</h3>
+      <p class="meta">লেখক: জন Doe • তারিখ: ১০ সেপ্টেম্বর, ২০২৫</p>
+      <p>নার্সিং পেশার মর্যাদা রেখে, কর্মক্ষেত্রে নিরাপত্তা নিশ্চিত করা অত্যাবশ্যক। বাংলাদেশ নার্সেস এসোসিয়েশন ময়মনসিংহ জেলা শাখা এরূপ উদ্যোগ নিচ্ছে।</p>
+      <a href="blog/safety-and-respect.html" class="read-more">আরও পড়ুন →</a>
+    </article>
+
+  </div>
+</section>
+<!-- === ব্লগ পোস্ট সেকশন শেষ === -->
+
+<!-- নিচের CSS <head> এর ভেতরে বা style.css এ দিন -->
+<style>
+#blog-posts {
+  padding: 40px 0;
+  background: #f9f9f9;
+  font-family: sans-serif;
+}
+#blog-posts .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+#blog-posts h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+.blog-card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.blog-card h3 {
+  margin-top: 0;
+}
+.blog-card .meta {
+  color: #777;
+  font-size: 14px;
+}
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007BFF;
+  text-decoration: none;
+}
+.read-more:hover {
+  text-decoration: underline;
+}
+</style>
         <!-- Sidebar -->
         <aside>
             <div class="sidebar-card">
@@ -317,3 +384,4 @@
     </script>
 </body>
 </html>
+
