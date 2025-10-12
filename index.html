@@ -10,13 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
         :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #1976d2;
-            --accent-color: #fbc02d;
+            /* মূল কালার প্যালেট */
+            --primary-color: #0d47a1; /* গাঢ় নীল */
+            --secondary-color: #1976d2; /* হালকা নীল */
+            --accent-color: #fbc02d; /* সোনালী/হলুদ (হাইলাইট) */
             --text-color: #333333;
             --light-text-color: #f1f1f1;
             --bg-color: rgba(244, 247, 249, 0.95);
@@ -24,14 +26,13 @@
             --border-color: #e0e0e0;
             --border-radius: 8px;
             --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            /* নতুন: মোবাইল নেভিগেশনের জন্য */
             --nav-height: 60px;
-            /* New Committee Card Styles */
-            --card-bg: #ffffff;
-            --muted: #6b7280;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
             background-color: var(--bg-color);
@@ -51,11 +52,25 @@
         p { margin-bottom: 1rem; }
 
         /* --- Layout: Main content with Sidebar --- */
-        .main-wrapper { display: flex; gap: 30px; margin-top: 30px; }
-        main { flex: 3; min-width: 0; background: var(--white-color); padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); }
-        aside { flex: 1; min-width: 280px; }
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        main {
+            flex: 3;
+            min-width: 0;
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        aside {
+            flex: 1;
+            min-width: 280px;
+        }
 
-        /* --- Header --- */
+        /* --- Header Area --- */
         .top-bar { background-color: var(--primary-color); color: var(--light-text-color); padding: 8px 0; font-size: 14px; }
         .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
         .top-bar-contact a, .top-bar-social a { color: var(--light-text-color); text-decoration: none; margin-left: 15px; transition: color 0.3s; }
@@ -69,58 +84,180 @@
         .logo-area .title p { font-size: 1.1rem; margin: 0; color: var(--text-color); }
         #date-time { font-size: 15px; color: var(--secondary-color); font-weight: 500; text-align: right; }
 
-        /* --- Navigation (Desktop) --- */
-        .navbar { background-color: var(--white-color); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        /* --- Navigation Bar (Desktop) --- */
+        .navbar { 
+            background-color: var(--white-color); 
+            box-shadow: var(--shadow); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+        }
         .navbar-desktop ul { list-style: none; display: flex; justify-content: center; margin: 0; }
         .navbar-desktop ul li { position: relative; }
         .navbar-desktop ul li a { display: block; color: var(--primary-color); padding: 18px 20px; text-decoration: none; font-weight: 600; transition: all 0.3s; border-bottom: 3px solid transparent; }
         .navbar-desktop ul li a:hover, .navbar-desktop ul li a.active { color: var(--secondary-color); background-color: #f5f5f5; border-bottom-color: var(--accent-color); }
         .navbar-desktop .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; padding: 5px 0; }
         .navbar-desktop .dropdown:hover .dropdown-menu { display: block; }
-        .navbar-desktop .dropdown-menu a.pdf-link:before { content: "\f1c1"; font-family: 'Font Awesome 6 Free'; font-weight: 900; margin-right: 8px; color: #d32f2f; }
+        .navbar-desktop .dropdown-menu a.pdf-link:before {
+            content: "\f1c1";
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-right: 8px;
+            color: #d32f2f;
+        }
         .navbar-desktop .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
         .navbar-desktop .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
 
-        /* --- Mobile Navigation --- */
-        .navbar-mobile { display: none; background-color: var(--primary-color); position: sticky; top: 0; z-index: 1000; height: var(--nav-height); }
-        .mobile-header { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        .mobile-logo { color: var(--white-color); font-size: 1.2rem; font-weight: 700; margin-left: 10px; }
-        .hamburger-menu { cursor: pointer; padding: 10px; margin-right: 10px; }
-        .hamburger-menu i { color: var(--accent-color); font-size: 1.5rem; }
 
-        .mobile-menu { display: none; position: fixed; top: var(--nav-height); left: 0; width: 100%; height: calc(100vh - var(--nav-height)); background-color: var(--white-color); overflow-y: auto; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 999; padding: 20px; transform: translateX(100%); transition: transform 0.3s ease-in-out; }
-        .mobile-menu.active { display: block; transform: translateX(0); }
-        .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
-        .mobile-menu ul li a { display: block; padding: 15px 10px; border-bottom: 1px solid var(--border-color); color: var(--text-color); font-weight: 500; }
-        .mobile-menu ul li a:hover { background-color: #f5f5f5; color: var(--secondary-color); }
-        .mobile-menu .dropdown-menu { display: none; list-style: none; padding-left: 15px; background-color: #f9f9f9; }
-        .mobile-menu .dropdown.open .dropdown-menu { display: block; }
+        /* --- Mobile Navigation (NEW) --- */
+        .navbar-mobile {
+            display: none; /* Desktop এ হাইড থাকবে */
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+        }
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        .mobile-logo {
+            color: var(--white-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        .hamburger-menu {
+            cursor: pointer;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .hamburger-menu i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background-color: var(--white-color);
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 999;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-menu ul li a {
+            display: block;
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .mobile-menu ul li a:hover {
+            background-color: #f5f5f5;
+            color: var(--secondary-color);
+        }
+        /* মোবাইল ড্রপডাউন ম্যানেজমেন্ট */
+        .mobile-menu .dropdown-menu {
+            display: none;
+            list-style: none;
+            padding-left: 15px;
+            background-color: #f9f9f9;
+        }
+        .mobile-menu .dropdown-menu a {
+            padding: 10px 10px;
+            font-size: 0.95rem;
+            border-bottom: none;
+        }
+        .mobile-menu .dropdown.open .dropdown-menu {
+            display: block;
+        }
+
 
         /* --- Hero Slider --- */
         .hero-slider { width: 100%; height: 450px; }
         .swiper-slide { background-size: cover; background-position: center; color: var(--white-color); display: flex; justify-content: center; align-items: center; }
         .swiper-slide .slide-content { background-color: rgba(13, 71, 161, 0.75); padding: 30px; border-radius: var(--border-radius); max-width: 600px; text-align: center; }
         .swiper-slide h1 { color: var(--white-color); font-size: 2.5rem; margin-bottom: 10px; }
-
+        
         /* Section Title */
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 10px; }
         .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--accent-color); }
-
+        
         /* --- Sidebar --- */
-        .sidebar-card { background: var(--white-color); padding: 25px; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: center; border-top: 5px solid var(--accent-color); margin-bottom: 30px; }
-        .sidebar-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid var(--white-color); box-shadow: 0 0 15px rgba(0,0,0,0.15); margin: -60px auto 15px auto; display: block; position: relative; }
+        .sidebar-card {
+            background: var(--white-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+            margin-bottom: 30px;
+        }
+        .sidebar-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white-color);
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            margin: -60px auto 15px auto;
+            display: block;
+            position: relative;
+        }
         .sidebar-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
         .sidebar-card p.designation { font-size: 1.1rem; color: var(--secondary-color); font-weight: 500; margin-bottom: 15px; }
-        .read-more-btn { display: inline-block; background-color: var(--primary-color); color: var(--white-color); padding: 10px 20px; margin-top: 15px; border-radius: 4px; font-weight: 600; transition: background-color 0.3s; }
-        .read-more-btn:hover { background-color: var(--secondary-color); color: var(--white-color); }
 
-        /* --- News/Notice --- */
-        .notice-card { border: 1px solid var(--border-color); padding: 15px; margin-bottom: 15px; border-radius: 5px; border-left: 5px solid var(--primary-color); background: #fff; }
+        /* বিস্তারিত পড়ুন বাটন স্টাইল */
+        .read-more-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .read-more-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+        
+        /* --- News/Notice Card for Main Content --- */
+        .notice-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 5px solid var(--primary-color);
+            background: #fff;
+        }
         .notice-card h4 { margin-bottom: 5px; font-size: 1.2rem; }
         .notice-card small { color: #777; font-size: 0.85rem; display: block; margin-bottom: 10px; }
         .notice-card p { margin-bottom: 0; }
-        
+
+
         /* --- Footer --- */
         .main-footer { background-color: #2c3e50; color: #bdc3c7; padding: 60px 0 30px; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -131,37 +268,96 @@
         .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
         .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #34495e; text-align: center; font-size: 14px; color: #bdc3c7; }
 
-        /* --- NEW COMMITTEE GRID STYLES (Integrated) --- */
-        .committee-grid-section { padding: 30px 0; }
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}
-        .card{background:var(--card-bg);border-radius:12px;box-shadow:0 4px 16px rgba(15,23,42,0.06);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
-        .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(15,23,42,0.12)}
-        .photo{width:100%;height:240px;object-fit:cover;background:#ddd}
-        .card-body{padding:14px;text-align: center;}
-        .name{font-size:18px;font-weight:700;margin:0;color: var(--primary-color);}
-        .role{color:var(--secondary-color);font-weight:600;margin:6px 0;font-size: 16px;}
-        .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
-        .contact{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
-        .chip{padding:8px 10px;background:#f8fafc;border-radius:999px;font-size:13px;color:#0f172a;border:1px solid rgba(15,23,42,0.04)}
-        .actions{display:flex;gap:8px;margin-top:10px;justify-content:center}
-        .btn{padding:8px 12px;border-radius:8px;font-weight:600;border:0;background:var(--primary-color);color:#fff;text-decoration:none;font-size:14px;transition: background-color 0.3s;}
-        .btn:hover { background-color: var(--secondary-color); }
-        .btn.secondary{background:transparent;color:var(--primary-color);border:1px solid rgba(11,94,215,0.12)}
-
-
-        /* --- Responsive --- */
+        /* ==================================== */
+        /* === Responsive Overrides (Mobile First) === */
+        /* ==================================== */
         @media (max-width: 992px) {
+            /* ডেস্কটপ নেভিগেশন হাইড করা হলো */
             .navbar-desktop { display: none; }
+            /* মোবাইল নেভিগেশন শো করা হলো */
             .navbar-mobile { display: block; }
-            .main-wrapper { flex-direction: column; margin-top: 15px; }
-            main { padding: 15px; order: 1; }
-            aside { min-width: unset; order: 2; }
+
+            .main-header { padding: 10px 0; }
+            .main-header-content { 
+                flex-direction: row; 
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+            .logo-area { 
+                flex-direction: row; 
+                text-align: left;
+                align-items: center;
+            }
+            .logo-area img { 
+                height: 50px; /* লোগোর আকার ছোট করা হলো */
+                margin-right: 10px;
+            }
+            .logo-area .title h1 { 
+                font-size: 1.2rem; 
+                white-space: nowrap; /* একটি লাইনে রাখার চেষ্টা */
+            }
+            .logo-area .title p { 
+                font-size: 0.9rem; 
+                white-space: nowrap;
+            }
+            
+            #date-time { 
+                font-size: 12px; 
+                text-align: right;
+                line-height: 1.3;
+                margin-left: 10px;
+            }
+
+            .top-bar-content { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 5px;
+            }
+            .top-bar-contact, .top-bar-social {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar-contact a, .top-bar-social a {
+                margin: 0 5px;
+            }
+
+            /* মূল কনটেন্ট এবং সাইডবার স্ট্যাক করা হলো */
+            .main-wrapper { 
+                flex-direction: column; 
+                margin-top: 15px;
+            }
+            main { 
+                padding: 15px; 
+                order: 1; /* মূল কনটেন্ট উপরে থাকবে */
+            }
+            aside { 
+                min-width: unset; 
+                order: 2; /* সাইডবার নিচে যাবে */
+            }
+
             .hero-slider { height: 250px; }
-            .swiper-slide .slide-content { padding: 15px; max-width: 90%; }
+            .swiper-slide .slide-content { 
+                padding: 15px; 
+                max-width: 90%;
+            }
             .swiper-slide h1 { font-size: 1.5rem; }
             .swiper-slide p { font-size: 0.9rem; }
-            .sidebar-card img { width: 100px; height: 100px; margin-top: -50px; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            
+            .section-title { margin-bottom: 25px; }
+            .section-title h2 { font-size: 1.8rem; }
+
+            .sidebar-card img {
+                width: 100px;
+                height: 100px;
+                margin-top: -50px; /* উপরে সামান্য উঠানো */
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -201,7 +397,8 @@
                 <li class="dropdown">
                     <a href="#">কমিটি <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#district-committee">জেলা কমিটি, ময়মনসিংহ (নিচে দেখুন)</a></li>
+                        
+                        <li><a href="https://bna-mymensingh.blogspot.com/p/mymensingh-district-committee.html" target="_blank">জেলা কমিটি, ময়মনসিংহ</a></li>
                         <li><a href="district-standing-committee.html" target="_blank"> জেলা স্ট্যান্ডিং কমিটি</a></li>
                         <li><a href="central-standing-committee.html" target="_blank"> কেন্দ্রীয় স্যান্ডিং কমিটি</a></li>
                     </ul>
@@ -209,6 +406,7 @@
                 <li class="dropdown">
                     <a href="#">নোটিশ/ফাইল <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
+                        
                         <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
                     </ul>
                 </li>
@@ -222,20 +420,22 @@
     <nav class="navbar-mobile">
         <div class="container mobile-header">
             <div class="mobile-logo">বিএনএ ময়মনসিংহ</div>
-            <div class="hamburger-menu" id="hamburger"><i class="fas fa-bars"></i></div>
+            <div class="hamburger-menu" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html">প্রচ্ছদ</a></li>
-                <li class="dropdown">
+                <li><a href="index.html" class="active">প্রচ্ছদ</a></li>
+                <li class="dropdown" data-dropdown>
                     <a href="#">কমিটি <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#district-committee">জেলা কমিটি, ময়মনসিংহ (নিচে দেখুন)</a></li>
+                        <li><a href="https://bna-mymensingh.blogspot.com/p/mymensingh-district-committee.html" target="_blank">জেলা কমিটি, ময়মনসিংহ</a></li>
                         <li><a href="district-standing-committee.html" target="_blank"> জেলা স্ট্যান্ডিং কমিটি</a></li>
                         <li><a href="central-standing-committee.html" target="_blank"> কেন্দ্রীয় স্যান্ডিং কমিটি</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown" data-dropdown>
                     <a href="#">নোটিশ/ফাইল <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
@@ -247,205 +447,113 @@
             </ul>
         </div>
     </nav>
-
-    <div class="hero-slider swiper">
+    
+    <div class="swiper hero-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('https://via.placeholder.com/1200x450?text=Slide+1');">
-                <div class="slide-content">
-                    <h1>বাংলাদেশ নার্সেস এসোসিয়েশন</h1>
-                    <p>ময়মনসিংহ জেলা শাখা</p>
-                </div>
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop');">
+                <div class="slide-content"><h1>সেবা, একতা এবং অগ্রগতি</h1><p>নার্সিং পেশার মানোন্নয়নে আমরা ঐক্যবদ্ধ।</p></div>
             </div>
-            <div class="swiper-slide" style="background-image: url('https://via.placeholder.com/1200x450?text=Slide+2');">
-                <div class="slide-content">
-                    <h1>সদস্যদের জন্য তথ্য</h1>
-                    <p>আপডেটেড নোটিশ ও কমিটি</p>
-                </div>
+            <div class="swiper-slide" style="background-image: url('https://ik.imagekit.io/nasirbam/Home%20page%20Image.jpg?updatedAt=1760183215317');">
+                <div class="slide-content"><h1>বিএনএ ময়মনসিংহ-এ স্বাগতম</h1><p>আমরা ময়মনসিংহ জেলার সকল নার্সদের কল্যাণে নিবেদিত।</p></div>
             </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next" style="color: var(--accent-color);"></div>
+        <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
 
     <div class="container main-wrapper">
+        
         <main>
-            <section class="committee-grid-section" id="district-committee">
-                <div class="section-title"><h2>জেলা কমিটি, ময়মনসিংহ</h2></div>
-                <div class="grid">
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Dr.+Abul+Kashem" alt="ডঃ আবুল কাশেম">
-                        <div class="card-body">
-                            <p class="name">ডঃ আবুল কাশেম</p>
-                            <p class="role">সভাপতি</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ abu.k@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Md.+Sirajul+Islam" alt="মোঃ সিরাজুল ইসলাম">
-                        <div class="card-body">
-                            <p class="name">মোঃ সিরাজুল ইসলাম</p>
-                            <p class="role">সাধারণ সম্পাদক</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ siraj@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Smt.+Rozina+Khanom" alt="শ্রীমতি রোজিনা খানম">
-                        <div class="card-body">
-                            <p class="name">শ্রীমতি রোজিনা খানম</p>
-                            <p class="role">সহ-সভাপতি</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ rozina@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Dr.+Mohammad+Hamid" alt="ডাঃ মোহাম্মদ হামিদ">
-                        <div class="card-body">
-                            <p class="name">ডাঃ মোহাম্মদ হামিদ</p>
-                            <p class="role">কোষাধ্যক্ষ</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ hamid@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Mosha.+Selina+Akter" alt="মোছাঃ সেলিনা আক্তার">
-                        <div class="card-body">
-                            <p class="name">মোছাঃ সেলিনা আক্তার</p>
-                            <p class="role">সাংগঠনিক সম্পাদক</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ selina@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img class="photo" src="https://via.placeholder.com/600x400?text=Md.+Anisur+Rahman" alt="মোঃ আনিসুর রহমান">
-                        <div class="card-body">
-                            <p class="name">মোঃ আনিসুর রহমান</p>
-                            <p class="role">উপ-সম্পাদক</p>
-                            <p class="meta">ময়মনসিংহ জেলা</p>
-                            <div class="contact">
-                                <span class="chip">✉️ anis@example.com</span>
-                                <span class="chip">📞 +8801XXXXXXXXX</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn" href="#">বিস্তারিত</a>
-                                <a class="btn secondary" href="#">প্রোফাইল</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+            <section id="about-us" class="section-padding" style="padding: 0; margin-bottom: 30px;">
+                <div class="section-title" style="margin-bottom: 20px;"><h2>আমাদের সম্পর্কে</h2></div>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি অরাজনৈতিক, অলাভজনক এবং সম্পূর্ণ পেশাজীবী সংগঠন। আমাদের মূল লক্ষ্য হলো ময়মনসিংহ জেলায় কর্মরত সকল নার্সদের পেশাগত মান উন্নয়ন, অধিকার প্রতিষ্ঠা, ঐক্য সুসংহত করা এবং কর্মক্ষেত্রে একটি নিরাপদ ও সম্মানজনক পরিবেশ নিশ্চিত করা।</p>
+                <p>আমরা সদস্যদের দক্ষতা বৃদ্ধি ও আধুনিক নার্সিং সেবার সাথে তাল মিলিয়ে চলার জন্য প্রয়োজনীয় প্রশিক্ষণ, সেমিনার এবং সহযোগিতার ব্যবস্থা করতে প্রতিশ্রুতিবদ্ধ।</p>
             </section>
-            <div class="section-title" style="margin-top: 60px;"><h2>সাম্প্রতিক নোটিশ</h2></div>
-            <div class="notice-card">
-                <h4>নোটিশ শিরোনাম ১</h4>
-                <small>10 অক্টোবর 2025</small>
-                <p>এটি একটি উদাহরণ নোটিশ। এখানে বিস্তারিত লেখা থাকবে।</p>
-            </div>
-            <div class="notice-card">
-                <h4>নোটিশ শিরোনাম ২</h4>
-                <small>05 অক্টোবর 2025</small>
-                <p>এটি আরেকটি উদাহরণ নোটিশ।</p>
-            </div>
-        </main>
 
+            <section id="latest-news">
+                <div class="section-title"><h2>সাম্প্রতিক নোটিশ ও খবর</h2></div>
+                
+                <div class="notice-card">
+                    <h4><a href="#">বিএনএ নির্বাচনীয় তফসিল ২০২৫ ঘোষণা</a></h4>
+                    <small>প্রকাশকাল: ১০ অক্টোবর ২০২৫</small>
+                    <p>বাংলাদেশ নার্সেস এসোসিয়েশন, ময়মনসিংহ জেলা শাখার নির্বাচনীয় তফসিল ঘোষণা করা হয়েছে। সকল সদস্যকে অংশগ্রহণের জন্য অনুরোধ করা হলো। <a href="#">বিস্তারিত পড়ুন...</a></p>
+                </div>
+
+                <div class="notice-card">
+                    <h4><a href="#">আন্তর্জাতিক নার্স দিবস উদযাপন প্রস্তুতি সভা</a></h4>
+                    <small>প্রকাশকাল: ০১ অক্টোবর ২০২৫</small>
+                    <p>আগামী ১২ই মে আন্তর্জাতিক নার্স দিবস উদযাপনের প্রস্তুতিমূলক সভা আগামী ১৫ অক্টোবর অনুষ্ঠিত হবে। <a href="#">বিস্তারিত পড়ুন...</a></p>
+                </div>
+                
+                <div class="notice-card">
+                    <h4><a href="#">নতুন সদস্য নিবন্ধনের সময়সীমা বৃদ্ধি</a></h4>
+                    <small>প্রকাশকাল: ২৫ সেপ্টেম্বর ২০২৫</small>
+                    <p>২০২৫ সালের জন্য নতুন সদস্য নিবন্ধনের সময়সীমা আগামী ৩০ নভেম্বর পর্যন্ত বাড়ানো হলো। <a href="https://member.bna.org.bd/register">সদস্য হোন</a></p>
+                </div>
+                
+                </section>
+        </main>
+        
         <aside>
             <div class="sidebar-card">
-                <img src="https://via.placeholder.com/150" alt="নাম">
-                <h3>ডঃ জন ডো</h3>
-                <p class="designation">জেলা সভাপতি</p>
-                <a href="#" class="read-more-btn">বিস্তারিত</a>
+                <img src="https://ik.imagekit.io/nasirbam/mizan.png?updatedAt=1751960098351" alt="সভাপতির ছবি">
+                <h3>সভাপতি</h3>
+                <h4>মোঃ মিজানুর রহমান</h4>
+                <p class="designation">ময়মনসিংহ জেলা শাখা</p>
+                <p style="font-size: 15px;">"আমাদের মূল লক্ষ্য হলো প্রতিটি নার্সের পেশাগত অধিকার প্রতিষ্ঠা করা এবং তাদের জন্য একটি নিরাপদ ও সম্মানজনক কর্মপরিবেশ নিশ্চিত করা।"</p>
+                
+                <a href="URL_OF_PRESIDENT_MESSAGE_PAGE" class="read-more-btn">
+                    <i class="fas fa-arrow-right"></i> সভাপতির বার্তা পড়ুন
+                </a>
             </div>
-            <div class="sidebar-card">
-                <img src="https://via.placeholder.com/150" alt="নাম">
-                <h3>ডঃ জেন স্মিথ</h3>
-                <p class="designation">জেলা সম্পাদক</p>
-                <a href="#" class="read-more-btn">বিস্তারিত</a>
+
+             <div class="sidebar-card" style="border-top: 5px solid var(--secondary-color);">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul style="list-style: none; padding: 0; text-align: left;">
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.dgnm.gov.bd/" target="_blank">নার্সিং ও মিডওয়াইফারি অধিদপ্তর</a></li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.bnmc.gov.bd/" target="_blank">নার্সিং ও মিডওয়াইফারি কাউন্সিল</a></li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.mohfw.gov.bd/" target="_blank">স্বাস্থ্য ও পরিবার কল্যাণ মন্ত্রণালয়</a></li>
+                </ul>
             </div>
         </aside>
     </div>
 
-    <footer class="main-footer" id="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>যোগাযোগ</h3>
-                    <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা<br>
-                    ইমেইল: bna.mymdist@gmail.com<br>
-                    ফোন: +8801234567890</p>
-                </div>
-                <div class="footer-col">
-                    <h3>দ্রুত লিঙ্ক</h3>
-                    <ul>
-                        <li><a href="index.html">প্রচ্ছদ</a></li>
-                        <li><a href="#district-committee">কমিটি</a></li>
-                        <li><a href="#">নোটিশ</a></li>
-                        <li><a href="#">গ্যালারি</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>সোশ্যাল মিডিয়া</h3>
-                    <ul>
-                        <li><a href="https://www.facebook.com/bnamym" target="_blank">ফেসবুক</a></li>
-                        <li><a href="https://www.youtube.com/@PresidentBNAMymensingh" target="_blank">ইউটিউব</a></li>
-                    </ul>
-                </div>
+    <footer id="footer" class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>আমাদের সম্পর্কে</h3>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা </p>
             </div>
-            <div class="footer-bottom">
-                &copy; 2025 বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা | সর্বস্বত্ব সংরক্ষিত
+            <div class="footer-col">
+                <h3>গুরুত্বপূর্ণ ফাইল</h3>
+                <ul>
+                    <li><a href="URL_OF_POLICY_PDF" target="_blank" class="pdf-link">নীতিমালা (পিডিএফ)</a></li>
+                    <li><a href="https://bna.org.bd/wp-content/uploads/2025/04/BNA-Constitution-1972.pdf" target="_blank" class="pdf-link">গঠনতন্ত্র (পিডিএফ)</a></li>
+                    <li><a href="http://www.bna.org.bd" target="_blank">বিএনএ কেন্দ্রীয় কমিটি</a></li>
+                </ul>
             </div>
+            <div class="footer-col">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ঠিকানা: প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
+                <p><i class="fas fa-envelope"></i> ইমেইল: bna.mymdist@gmail.com</p>
+                <p><i class="fas fa-phone"></i> ফোন: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Hero slider
+        // স্লাইডার ইনিশিয়ালাইজেশন
         new Swiper(".hero-slider", {
             loop: true,
             autoplay: { delay: 4000, disableOnInteraction: false },
             navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         });
 
-        // Date & Time (Bangla)
+        // বাংলা তারিখ ও সময় আপডেট
         function updateDateTime() {
             const now = new Date();
             const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -453,29 +561,63 @@
             const dateString = now.toLocaleDateString('bn-BD', dateOptions);
             const timeString = now.toLocaleTimeString('bn-BD', timeOptions);
             const dateTimeDiv = document.getElementById('date-time');
-            if (dateTimeDiv) {
-                dateTimeDiv.innerHTML = `<span>${dateString}</span><br><span>${timeString}</span>`;
+            if(dateTimeDiv) {
+               dateTimeDiv.innerHTML = `<span>${dateString}</span><br><span>${timeString}</span>`;
             }
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Mobile menu toggle
-        const hamburger = document.getElementById("hamburger");
-        const mobileMenu = document.getElementById("mobileMenu");
+        // মোবাইল মেনু টগল এবং ড্রপডাউন কার্যকারিতা
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const dropdowns = document.querySelectorAll('.mobile-menu .dropdown');
 
-        hamburger.addEventListener("click", () => {
-            mobileMenu.classList.toggle("active");
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            // হ্যামবার্গার আইকন পরিবর্তন
+            const icon = hamburger.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // X (close) icon
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Mobile dropdown toggle
-        document.querySelectorAll(".mobile-menu .dropdown").forEach(dropdown => {
-            dropdown.querySelector("a").addEventListener("click", e => {
-                e.preventDefault();
-                dropdown.classList.toggle("open");
+        // মোবাইল মেনুর ড্রপডাউন টগল করা
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                // শুধু মোবাইল ড্রপডাউনের জন্য
+                if (window.innerWidth < 993) { 
+                    e.preventDefault(); 
+                    dropdown.classList.toggle('open');
+                    // অন্য ড্রপডাউন বন্ধ করা
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+                }
             });
         });
-    </script>
 
+        // মেনু আইটেমে ক্লিক করার পর মেনু বন্ধ করা
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                // যদি এটি একটি ড্রপডাউন টগল না হয়
+                if (!link.closest('.dropdown')) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
+
+
