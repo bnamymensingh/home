@@ -1,75 +1,183 @@
-/* হালকা নীল ব্যাকগ্রাউন্ড সহ মোবাইল-ফ্রেন্ডলি HTML কোড */
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BNA Mymensingh</title>
-  <style>
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; }
-    header { background-color: #004080; color: white; text-align: center; padding: 10px; }
-    nav { background: #0066cc; display: flex; flex-wrap: wrap; justify-content: space-around; }
-    nav a { color: white; text-decoration: none; padding: 10px; display: block; }
-    nav a:hover { background: #004080; }
-    .content { padding: 15px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা</title>
 
-    footer { background: linear-gradient(to bottom, #003366, #0055aa); color: white; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 20px 10px; }
-    footer div { flex: 1 1 220px; margin: 10px; }
-    footer h3 { color: white; border-bottom: 1px solid white; padding-bottom: 5px; text-align: center; }
-    footer ul { list-style: none; padding: 0; }
-    footer li { margin: 5px 0; text-align: center; }
-    footer a { color: white; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    @media (max-width: 768px) {
-      nav { flex-direction: column; }
-      footer { flex-direction: column; align-items: center; }
-      footer div { text-align: center; }
-    }
-  </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1976d2;
+            --accent-color: #fbc02d;
+            --text-color: #333;
+            --light-text-color: #f1f1f1;
+            --white-color: #ffffff;
+            --bg-color: #f4f7f9;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--bg-color);
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        a { text-decoration: none; color: var(--primary-color); transition: 0.3s; }
+        a:hover { color: var(--accent-color); }
+        .container { max-width: 1200px; margin: auto; padding: 0 15px; }
+
+        /* Header */
+        .top-bar { background: var(--primary-color); color: white; padding: 8px 0; font-size: 14px; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar a { color: white; margin-left: 15px; }
+
+        .main-header { background: white; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .logo-area { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .logo-area img { height: 70px; margin-right: 15px; }
+        .title h1 { color: var(--primary-color); margin: 0; font-size: 1.7rem; }
+        .title p { margin: 0; color: #444; }
+
+        /* Navbar */
+        .navbar { background: white; box-shadow: var(--shadow); }
+        .navbar ul { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
+        .navbar ul li a { display: block; padding: 16px 20px; color: var(--primary-color); font-weight: 600; }
+        .navbar ul li a:hover, .navbar ul li a.active { background: #f5f5f5; border-bottom: 3px solid var(--accent-color); }
+
+        /* Hero */
+        .hero-slider { height: 450px; }
+        .swiper-slide { background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+        .slide-content { background: rgba(13,71,161,0.7); padding: 25px; border-radius: var(--border-radius); text-align: center; color: white; }
+
+        /* Footer */
+        .main-footer { background: linear-gradient(to bottom, #0d47a1, #003366); color: white; padding: 60px 0 30px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .footer-col h3 { color: white; margin-bottom: 20px; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        .footer-col p, .footer-col ul li a { color: white; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a:hover { color: var(--accent-color); }
+        .footer-bottom { text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; color: #eee; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-content, .logo-area { flex-direction: column; text-align: center; }
+            .navbar ul { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>বাংলাদেশ নার্সেস অ্যাসোসিয়েশন, ময়মনসিংহ</h1>
-  </header>
 
-  <nav>
-    <a href="#">হোম</a>
-    <a href="#">আমাদের সম্পর্কে</a>
-    <a href="#">গুরুত্বপূর্ণ ফাইল</a>
-    <a href="#">যোগাযোগ</a>
-  </nav>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>
+                <a href="mailto:bna.mymdist@gmail.com"><i class="fas fa-envelope"></i> bna.mymdist@gmail.com</a>
+                <a href="tel:+8801234567890"><i class="fas fa-phone"></i> +৮৮০ ১২৩৪-৫৬৭৮৯০</a>
+            </div>
+            <div>
+                <a href="https://www.facebook.com/bnamym" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@PresidentBNAMymensingh" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
 
-  <div class="content">
-    <h2>স্বাগতম BNA ময়মনসিংহ ওয়েবসাইটে</h2>
-    <p>এই ওয়েবসাইটে আপনি BNA ময়মনসিংহ সম্পর্কিত সকল তথ্য, গুরুত্বপূর্ণ ফাইল, ও সর্বশেষ আপডেট পাবেন।</p>
-  </div>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container logo-area">
+            <div style="display: flex; align-items: center;">
+                <img src="https://ik.imagekit.io/nasirbam/bna_logo.png" alt="BNA Logo">
+                <div class="title">
+                    <h1>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ)</h1>
+                    <p>ময়মনসিংহ জেলা শাখা</p>
+                </div>
+            </div>
+            <div id="date-time"></div>
+        </div>
+    </header>
 
-  <footer>
-    <div>
-      <h3>আমাদের সম্পর্কে</h3>
-      <ul>
-        <li><a href="#">সংক্ষিপ্ত পরিচিতি</a></li>
-        <li><a href="#">উদ্দেশ্য ও লক্ষ্য</a></li>
-        <li><a href="#">কমিটি</a></li>
-      </ul>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active">প্রচ্ছদ</a></li>
+                <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                <li><a href="#footer">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Slider -->
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url('https://ik.imagekit.io/nasirbam/Home%20page%20Image.jpg');">
+                <div class="slide-content">
+                    <h2>সেবা, একতা এবং অগ্রগতি</h2>
+                    <p>নার্সিং পেশার মানোন্নয়নে আমরা ঐক্যবদ্ধ।</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-      <h3>গুরুত্বপূর্ণ ফাইল</h3>
-      <ul>
-        <li><a href="#">নীতি ও বিধি</a></li>
-        <li><a href="#">ফর্ম ও ডাউনলোড</a></li>
-        <li><a href="#">বার্ষিক প্রতিবেদন</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>যোগাযোগ</h3>
-      <ul>
-        <li>ঠিকানা: BNA অফিস, ময়মনসিংহ</li>
-        <li>ফোন: ০১৭XXXXXXXX</li>
-        <li>ইমেইল: info@bna-mymensingh.org</li>
-      </ul>
-    </div>
-  </footer>
+
+    <!-- Footer -->
+    <footer id="footer" class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>আমাদের সম্পর্কে</h3>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি পেশাজীবী সংগঠন যা নার্সদের অধিকার ও কল্যাণে নিবেদিত।</p>
+            </div>
+            <div class="footer-col">
+                <h3>গুরুত্বপূর্ণ ফাইল</h3>
+                <ul>
+                    <li><a href="#">গঠনতন্ত্র (PDF)</a></li>
+                    <li><a href="#">নীতিমালা (PDF)</a></li>
+                    <li><a href="#">বিএনএ কেন্দ্রীয় কমিটি</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>যোগাযোগ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
+                <p><i class="fas fa-envelope"></i> bna.mymdist@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper(".hero-slider", {
+            loop: true,
+            autoplay: { delay: 4000 },
+        });
+
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const date = now.toLocaleDateString('bn-BD', dateOptions);
+            const time = now.toLocaleTimeString('bn-BD', timeOptions);
+            document.getElementById('date-time').innerHTML = `${date}<br>${time}`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+
 </body>
 </html>
