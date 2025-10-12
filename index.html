@@ -26,6 +26,8 @@
             --border-color: #e0e0e0;
             --border-radius: 8px;
             --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            /* নতুন: মোবাইল নেভিগেশনের জন্য */
+            --nav-height: 60px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -82,24 +84,114 @@
         .logo-area .title p { font-size: 1.1rem; margin: 0; color: var(--text-color); }
         #date-time { font-size: 15px; color: var(--secondary-color); font-weight: 500; text-align: right; }
 
-        /* --- Navigation Bar --- */
-        .navbar { background-color: var(--white-color); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
-        .navbar ul { list-style: none; display: flex; justify-content: center; }
-        .navbar ul li { position: relative; }
-        .navbar ul li a { display: block; color: var(--primary-color); padding: 18px 20px; text-decoration: none; font-weight: 600; transition: all 0.3s; border-bottom: 3px solid transparent; }
-        .navbar ul li a:hover, .navbar ul li a.active { color: var(--secondary-color); background-color: #f5f5f5; border-bottom-color: var(--accent-color); }
-        .navbar .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; padding: 5px 0; }
-        .navbar .dropdown:hover .dropdown-menu { display: block; }
-        /* PDF লিংকের জন্য বিশেষ আইকন */
-        .navbar .dropdown-menu a.pdf-link:before {
-            content: "\f1c1"; /* Font Awesome PDF icon code */
+        /* --- Navigation Bar (Desktop) --- */
+        .navbar { 
+            background-color: var(--white-color); 
+            box-shadow: var(--shadow); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+        }
+        .navbar-desktop ul { list-style: none; display: flex; justify-content: center; margin: 0; }
+        .navbar-desktop ul li { position: relative; }
+        .navbar-desktop ul li a { display: block; color: var(--primary-color); padding: 18px 20px; text-decoration: none; font-weight: 600; transition: all 0.3s; border-bottom: 3px solid transparent; }
+        .navbar-desktop ul li a:hover, .navbar-desktop ul li a.active { color: var(--secondary-color); background-color: #f5f5f5; border-bottom-color: var(--accent-color); }
+        .navbar-desktop .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; padding: 5px 0; }
+        .navbar-desktop .dropdown:hover .dropdown-menu { display: block; }
+        .navbar-desktop .dropdown-menu a.pdf-link:before {
+            content: "\f1c1";
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             margin-right: 8px;
-            color: #d32f2f; /* Red color for PDF */
+            color: #d32f2f;
         }
-        .navbar .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
-        .navbar .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
+        .navbar-desktop .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
+        .navbar-desktop .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
+
+
+        /* --- Mobile Navigation (NEW) --- */
+        .navbar-mobile {
+            display: none; /* Desktop এ হাইড থাকবে */
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+        }
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        .mobile-logo {
+            color: var(--white-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        .hamburger-menu {
+            cursor: pointer;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .hamburger-menu i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background-color: var(--white-color);
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 999;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-menu ul li a {
+            display: block;
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .mobile-menu ul li a:hover {
+            background-color: #f5f5f5;
+            color: var(--secondary-color);
+        }
+        /* মোবাইল ড্রপডাউন ম্যানেজমেন্ট */
+        .mobile-menu .dropdown-menu {
+            display: none;
+            list-style: none;
+            padding-left: 15px;
+            background-color: #f9f9f9;
+        }
+        .mobile-menu .dropdown-menu a {
+            padding: 10px 10px;
+            font-size: 0.95rem;
+            border-bottom: none;
+        }
+        .mobile-menu .dropdown.open .dropdown-menu {
+            display: block;
+        }
+
 
         /* --- Hero Slider --- */
         .hero-slider { width: 100%; height: 450px; }
@@ -176,17 +268,96 @@
         .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
         .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #34495e; text-align: center; font-size: 14px; color: #bdc3c7; }
 
-        /* Responsive */
+        /* ==================================== */
+        /* === Responsive Overrides (Mobile First) === */
+        /* ==================================== */
         @media (max-width: 992px) {
-            .navbar { display: none; }
-        }
-        @media (max-width: 768px) {
-            .top-bar-content, .main-header-content, .logo-area { flex-direction: column; text-align: center; gap: 10px; }
-            .main-wrapper { flex-direction: column; }
-            .hero-slider { height: 300px; }
-            .swiper-slide h1 { font-size: 1.8rem; }
-            #main-content { padding: 15px; }
-            #sidebar { min-width: unset; }
+            /* ডেস্কটপ নেভিগেশন হাইড করা হলো */
+            .navbar-desktop { display: none; }
+            /* মোবাইল নেভিগেশন শো করা হলো */
+            .navbar-mobile { display: block; }
+
+            .main-header { padding: 10px 0; }
+            .main-header-content { 
+                flex-direction: row; 
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+            .logo-area { 
+                flex-direction: row; 
+                text-align: left;
+                align-items: center;
+            }
+            .logo-area img { 
+                height: 50px; /* লোগোর আকার ছোট করা হলো */
+                margin-right: 10px;
+            }
+            .logo-area .title h1 { 
+                font-size: 1.2rem; 
+                white-space: nowrap; /* একটি লাইনে রাখার চেষ্টা */
+            }
+            .logo-area .title p { 
+                font-size: 0.9rem; 
+                white-space: nowrap;
+            }
+            
+            #date-time { 
+                font-size: 12px; 
+                text-align: right;
+                line-height: 1.3;
+                margin-left: 10px;
+            }
+
+            .top-bar-content { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 5px;
+            }
+            .top-bar-contact, .top-bar-social {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar-contact a, .top-bar-social a {
+                margin: 0 5px;
+            }
+
+            /* মূল কনটেন্ট এবং সাইডবার স্ট্যাক করা হলো */
+            .main-wrapper { 
+                flex-direction: column; 
+                margin-top: 15px;
+            }
+            main { 
+                padding: 15px; 
+                order: 1; /* মূল কনটেন্ট উপরে থাকবে */
+            }
+            aside { 
+                min-width: unset; 
+                order: 2; /* সাইডবার নিচে যাবে */
+            }
+
+            .hero-slider { height: 250px; }
+            .swiper-slide .slide-content { 
+                padding: 15px; 
+                max-width: 90%;
+            }
+            .swiper-slide h1 { font-size: 1.5rem; }
+            .swiper-slide p { font-size: 0.9rem; }
+            
+            .section-title { margin-bottom: 25px; }
+            .section-title h2 { font-size: 1.8rem; }
+
+            .sidebar-card img {
+                width: 100px;
+                height: 100px;
+                margin-top: -50px; /* উপরে সামান্য উঠানো */
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -219,7 +390,7 @@
         </div>
     </header>
     
-    <nav class="navbar">
+    <nav class="navbar navbar-desktop">
         <div class="container">
             <ul>
                 <li><a href="index.html" class="active">প্রচ্ছদ</a></li>
@@ -236,6 +407,37 @@
                     <a href="#">নোটিশ/ফাইল <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         
+                        <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
+                <li><a href="#footer">যোগাযোগ</a></li>
+                <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar-mobile">
+        <div class="container mobile-header">
+            <div class="mobile-logo">বিএনএ ময়মনসিংহ</div>
+            <div class="hamburger-menu" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html" class="active">প্রচ্ছদ</a></li>
+                <li class="dropdown" data-dropdown>
+                    <a href="#">কমিটি <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://bna-mymensingh.blogspot.com/p/mymensingh-district-committee.html" target="_blank">জেলা কমিটি, ময়মনসিংহ</a></li>
+                        <li><a href="district-standing-committee.html" target="_blank"> জেলা স্ট্যান্ডিং কমিটি</a></li>
+                        <li><a href="central-standing-committee.html" target="_blank"> কেন্দ্রীয় স্যান্ডিং কমিটি</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" data-dropdown>
+                    <a href="#">নোটিশ/ফাইল <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
                         <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
                     </ul>
                 </li>
@@ -365,6 +567,55 @@
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
+
+        // মোবাইল মেনু টগল এবং ড্রপডাউন কার্যকারিতা
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const dropdowns = document.querySelectorAll('.mobile-menu .dropdown');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            // হ্যামবার্গার আইকন পরিবর্তন
+            const icon = hamburger.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // X (close) icon
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // মোবাইল মেনুর ড্রপডাউন টগল করা
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                // শুধু মোবাইল ড্রপডাউনের জন্য
+                if (window.innerWidth < 993) { 
+                    e.preventDefault(); 
+                    dropdown.classList.toggle('open');
+                    // অন্য ড্রপডাউন বন্ধ করা
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+                }
+            });
+        });
+
+        // মেনু আইটেমে ক্লিক করার পর মেনু বন্ধ করা
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                // যদি এটি একটি ড্রপডাউন টগল না হয়
+                if (!link.closest('.dropdown')) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
