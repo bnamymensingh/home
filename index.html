@@ -4,103 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা</title>
-
-    <!-- Google Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Swiper Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
         :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #1976d2;
-            --accent-color: #fbc02d;
-            --text-color: #333;
+            /* মূল কালার প্যালেট */
+            --primary-color: #0d47a1; /* গাঢ় নীল */
+            --secondary-color: #1976d2; /* হালকা নীল */
+            --accent-color: #fbc02d; /* সোনালী/হলুদ (হাইলাইট) */
+            --text-color: #333333;
             --light-text-color: #f1f1f1;
+            --bg-color: rgba(244, 247, 249, 0.95);
             --white-color: #ffffff;
-            --bg-color: #f4f7f9;
             --border-color: #e0e0e0;
             --border-radius: 8px;
             --shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background: var(--bg-color);
-            line-height: 1.8;
+            font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png');
+            background-attachment: fixed;
             color: var(--text-color);
+            line-height: 1.8;
+            font-size: 16px;
         }
-        a { text-decoration: none; color: var(--primary-color); transition: 0.3s; }
+
+        a { text-decoration: none; color: var(--primary-color); transition: color 0.3s; }
         a:hover { color: var(--accent-color); }
-        .container { max-width: 1200px; margin: auto; padding: 0 15px; }
 
-        /* Header */
-        .top-bar { background: var(--primary-color); color: white; padding: 8px 0; font-size: 14px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 60px 0; }
+        h1, h2, h3, h4 { color: var(--primary-color); font-weight: 600; }
+        p { margin-bottom: 1rem; }
+
+        /* --- Layout: Main content with Sidebar --- */
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        main {
+            flex: 3;
+            min-width: 0;
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        aside {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        /* --- Header Area --- */
+        .top-bar { background-color: var(--primary-color); color: var(--light-text-color); padding: 8px 0; font-size: 14px; }
         .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
-        .top-bar a { color: white; margin-left: 15px; }
+        .top-bar-contact a, .top-bar-social a { color: var(--light-text-color); text-decoration: none; margin-left: 15px; transition: color 0.3s; }
+        .top-bar-contact a:hover, .top-bar-social a:hover { color: var(--accent-color); }
 
-        .main-header { background: white; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
-        .logo-area { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .logo-area img { height: 70px; margin-right: 15px; }
-        .title h1 { color: var(--primary-color); margin: 0; font-size: 1.7rem; }
-        .title p { margin: 0; color: #444; }
+        .main-header { background-color: var(--white-color); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .main-header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; }
+        .logo-area img { height: 70px; margin-right: 20px; }
+        .logo-area .title h1 { font-size: 1.7rem; margin: 0; }
+        .logo-area .title p { font-size: 1.1rem; margin: 0; color: var(--text-color); }
+        #date-time { font-size: 15px; color: var(--secondary-color); font-weight: 500; text-align: right; }
 
-        /* Navbar */
-        .navbar { background: white; box-shadow: var(--shadow); }
-        .navbar ul { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; }
-        .navbar ul li a { display: block; padding: 16px 20px; color: var(--primary-color); font-weight: 600; }
-        .navbar ul li a:hover, .navbar ul li a.active { background: #f5f5f5; border-bottom: 3px solid var(--accent-color); }
+        /* --- Navigation Bar --- */
+        .navbar { background-color: var(--white-color); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .navbar ul { list-style: none; display: flex; justify-content: center; }
+        .navbar ul li { position: relative; }
+        .navbar ul li a { display: block; color: var(--primary-color); padding: 18px 20px; text-decoration: none; font-weight: 600; transition: all 0.3s; border-bottom: 3px solid transparent; }
+        .navbar ul li a:hover, .navbar ul li a.active { color: var(--secondary-color); background-color: #f5f5f5; border-bottom-color: var(--accent-color); }
+        .navbar .dropdown-menu { display: none; position: absolute; left: 0; top: 100%; background-color: var(--white-color); min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 0 0 var(--border-radius) var(--border-radius); z-index: 1001; padding: 5px 0; }
+        .navbar .dropdown:hover .dropdown-menu { display: block; }
+        /* PDF লিংকের জন্য বিশেষ আইকন */
+        .navbar .dropdown-menu a.pdf-link:before {
+            content: "\f1c1"; /* Font Awesome PDF icon code */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-right: 8px;
+            color: #d32f2f; /* Red color for PDF */
+        }
+        .navbar .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
+        .navbar .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
 
-        /* Hero */
-        .hero-slider { height: 450px; }
-        .swiper-slide { background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
-        .slide-content { background: rgba(13,71,161,0.7); padding: 25px; border-radius: var(--border-radius); text-align: center; color: white; }
+        /* --- Hero Slider --- */
+        .hero-slider { width: 100%; height: 450px; }
+        .swiper-slide { background-size: cover; background-position: center; color: var(--white-color); display: flex; justify-content: center; align-items: center; }
+        .swiper-slide .slide-content { background-color: rgba(13, 71, 161, 0.75); padding: 30px; border-radius: var(--border-radius); max-width: 600px; text-align: center; }
+        .swiper-slide h1 { color: var(--white-color); font-size: 2.5rem; margin-bottom: 10px; }
+        
+        /* Section Title */
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--accent-color); }
+        
+        /* --- Sidebar --- */
+        .sidebar-card {
+            background: var(--white-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+            margin-bottom: 30px;
+        }
+        .sidebar-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white-color);
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            margin: -60px auto 15px auto;
+            display: block;
+            position: relative;
+        }
+        .sidebar-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .sidebar-card p.designation { font-size: 1.1rem; color: var(--secondary-color); font-weight: 500; margin-bottom: 15px; }
 
-        /* Footer */
-        .main-footer { background: linear-gradient(to bottom, #0d47a1, #003366); color: white; padding: 60px 0 30px; margin-top: 60px; }
+        /* বিস্তারিত পড়ুন বাটন স্টাইল */
+        .read-more-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .read-more-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+        
+        /* --- News/Notice Card for Main Content --- */
+        .notice-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 5px solid var(--primary-color);
+            background: #fff;
+        }
+        .notice-card h4 { margin-bottom: 5px; font-size: 1.2rem; }
+        .notice-card small { color: #777; font-size: 0.85rem; display: block; margin-bottom: 10px; }
+        .notice-card p { margin-bottom: 0; }
+
+
+        /* --- Footer --- */
+        .main-footer { background-color: #2c3e50; color: #bdc3c7; padding: 60px 0 30px; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .footer-col h3 { color: white; margin-bottom: 20px; border-bottom: 2px solid var(--accent-color); display: inline-block; }
-        .footer-col p, .footer-col ul li a { color: white; }
-        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col h3 { color: var(--white-color); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        .footer-col ul { list-style: none; padding-left: 0; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col a:hover { color: var(--accent-color); }
-        .footer-bottom { text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; color: #eee; }
+        .footer-col ul li a, .footer-col p { color: #bdc3c7; text-decoration: none; transition: all 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #34495e; text-align: center; font-size: 14px; color: #bdc3c7; }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .navbar { display: none; }
+        }
         @media (max-width: 768px) {
-            .top-bar-content, .logo-area { flex-direction: column; text-align: center; }
-            .navbar ul { flex-direction: column; }
+            .top-bar-content, .main-header-content, .logo-area { flex-direction: column; text-align: center; gap: 10px; }
+            .main-wrapper { flex-direction: column; }
+            .hero-slider { height: 300px; }
+            .swiper-slide h1 { font-size: 1.8rem; }
+            #main-content { padding: 15px; }
+            #sidebar { min-width: unset; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
     <div class="top-bar">
         <div class="container top-bar-content">
-            <div>
+            <div class="top-bar-contact">
                 <a href="mailto:bna.mymdist@gmail.com"><i class="fas fa-envelope"></i> bna.mymdist@gmail.com</a>
                 <a href="tel:+8801234567890"><i class="fas fa-phone"></i> +৮৮০ ১২৩৪-৫৬৭৮৯০</a>
             </div>
-            <div>
-                <a href="https://www.facebook.com/bnamym" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.youtube.com/@PresidentBNAMymensingh" target="_blank"><i class="fab fa-youtube"></i></a>
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/bnamym" target="_blank" title="ফেসবুক"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@PresidentBNAMymensingh" target="_blank" title="ইউটিউব"><i class="fab fa-youtube"></i></a>
+                <a href="https://member.bna.org.bd/register"><i class="fas fa-user-lock"></i> লগইন</a>
             </div>
         </div>
     </div>
 
-    <!-- Header -->
     <header class="main-header">
-        <div class="container logo-area">
-            <div style="display: flex; align-items: center;">
-                <img src="https://ik.imagekit.io/nasirbam/bna_logo.png" alt="BNA Logo">
+        <div class="container main-header-content">
+            <div class="logo-area">
+                <img src="https://ik.imagekit.io/nasirbam/bna_logo.png?updatedAt=1751567035734" alt="BNA Logo">
                 <div class="title">
                     <h1>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ)</h1>
                     <p>ময়মনসিংহ জেলা শাখা</p>
@@ -109,75 +218,153 @@
             <div id="date-time"></div>
         </div>
     </header>
-
-    <!-- Navbar -->
+    
     <nav class="navbar">
         <div class="container">
             <ul>
-                <li><a href="#" class="active">প্রচ্ছদ</a></li>
-                <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                <li><a href="index.html" class="active">প্রচ্ছদ</a></li>
+                <li class="dropdown">
+                    <a href="#">কমিটি <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a href="https://bna-mymensingh.blogspot.com/p/mymensingh-district-committee.html" target="_blank">জেলা কমিটি, ময়মনসিংহ</a></li>
+                        <li><a href="district-standing-committee.html" target="_blank"> জেলা স্ট্যান্ডিং কমিটি</a></li>
+                        <li><a href="central-standing-committee.html" target="_blank"> কেন্দ্রীয় স্যান্ডিং কমিটি</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">নোটিশ/ফাইল <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
                 <li><a href="#footer">যোগাযোগ</a></li>
+                <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
             </ul>
         </div>
     </nav>
-
-    <!-- Hero Slider -->
+    
     <div class="swiper hero-slider">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url('https://ik.imagekit.io/nasirbam/Home%20page%20Image.jpg');">
-                <div class="slide-content">
-                    <h2>সেবা, একতা এবং অগ্রগতি</h2>
-                    <p>নার্সিং পেশার মানোন্নয়নে আমরা ঐক্যবদ্ধ।</p>
-                </div>
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop');">
+                <div class="slide-content"><h1>সেবা, একতা এবং অগ্রগতি</h1><p>নার্সিং পেশার মানোন্নয়নে আমরা ঐক্যবদ্ধ।</p></div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('https://ik.imagekit.io/nasirbam/Home%20page%20Image.jpg?updatedAt=1760183215317');">
+                <div class="slide-content"><h1>বিএনএ ময়মনসিংহ-এ স্বাগতম</h1><p>আমরা ময়মনসিংহ জেলার সকল নার্সদের কল্যাণে নিবেদিত।</p></div>
             </div>
         </div>
+        <div class="swiper-button-next" style="color: var(--accent-color);"></div>
+        <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
 
-    <!-- Footer -->
+    <div class="container main-wrapper">
+        
+        <main>
+            <section id="about-us" class="section-padding" style="padding: 0; margin-bottom: 30px;">
+                <div class="section-title" style="margin-bottom: 20px;"><h2>আমাদের সম্পর্কে</h2></div>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি অরাজনৈতিক, অলাভজনক এবং সম্পূর্ণ পেশাজীবী সংগঠন। আমাদের মূল লক্ষ্য হলো ময়মনসিংহ জেলায় কর্মরত সকল নার্সদের পেশাগত মান উন্নয়ন, অধিকার প্রতিষ্ঠা, ঐক্য সুসংহত করা এবং কর্মক্ষেত্রে একটি নিরাপদ ও সম্মানজনক পরিবেশ নিশ্চিত করা।</p>
+                <p>আমরা সদস্যদের দক্ষতা বৃদ্ধি ও আধুনিক নার্সিং সেবার সাথে তাল মিলিয়ে চলার জন্য প্রয়োজনীয় প্রশিক্ষণ, সেমিনার এবং সহযোগিতার ব্যবস্থা করতে প্রতিশ্রুতিবদ্ধ।</p>
+            </section>
+
+            <section id="latest-news">
+                <div class="section-title"><h2>সাম্প্রতিক নোটিশ ও খবর</h2></div>
+                
+                <div class="notice-card">
+                    <h4><a href="#">বিএনএ নির্বাচনীয় তফসিল ২০২৫ ঘোষণা</a></h4>
+                    <small>প্রকাশকাল: ১০ অক্টোবর ২০২৫</small>
+                    <p>বাংলাদেশ নার্সেস এসোসিয়েশন, ময়মনসিংহ জেলা শাখার নির্বাচনীয় তফসিল ঘোষণা করা হয়েছে। সকল সদস্যকে অংশগ্রহণের জন্য অনুরোধ করা হলো। <a href="#">বিস্তারিত পড়ুন...</a></p>
+                </div>
+
+                <div class="notice-card">
+                    <h4><a href="#">আন্তর্জাতিক নার্স দিবস উদযাপন প্রস্তুতি সভা</a></h4>
+                    <small>প্রকাশকাল: ০১ অক্টোবর ২০২৫</small>
+                    <p>আগামী ১২ই মে আন্তর্জাতিক নার্স দিবস উদযাপনের প্রস্তুতিমূলক সভা আগামী ১৫ অক্টোবর অনুষ্ঠিত হবে। <a href="#">বিস্তারিত পড়ুন...</a></p>
+                </div>
+                
+                <div class="notice-card">
+                    <h4><a href="#">নতুন সদস্য নিবন্ধনের সময়সীমা বৃদ্ধি</a></h4>
+                    <small>প্রকাশকাল: ২৫ সেপ্টেম্বর ২০২৫</small>
+                    <p>২০২৫ সালের জন্য নতুন সদস্য নিবন্ধনের সময়সীমা আগামী ৩০ নভেম্বর পর্যন্ত বাড়ানো হলো। <a href="https://member.bna.org.bd/register">সদস্য হোন</a></p>
+                </div>
+                
+                </section>
+        </main>
+        
+        <aside>
+            <div class="sidebar-card">
+                <img src="https://ik.imagekit.io/nasirbam/mizan.png?updatedAt=1751960098351" alt="সভাপতির ছবি">
+                <h3>সভাপতি</h3>
+                <h4>মোঃ মিজানুর রহমান</h4>
+                <p class="designation">ময়মনসিংহ জেলা শাখা</p>
+                <p style="font-size: 15px;">"আমাদের মূল লক্ষ্য হলো প্রতিটি নার্সের পেশাগত অধিকার প্রতিষ্ঠা করা এবং তাদের জন্য একটি নিরাপদ ও সম্মানজনক কর্মপরিবেশ নিশ্চিত করা।"</p>
+                
+                <a href="URL_OF_PRESIDENT_MESSAGE_PAGE" class="read-more-btn">
+                    <i class="fas fa-arrow-right"></i> সভাপতির বার্তা পড়ুন
+                </a>
+            </div>
+
+             <div class="sidebar-card" style="border-top: 5px solid var(--secondary-color);">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul style="list-style: none; padding: 0; text-align: left;">
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.dgnm.gov.bd/" target="_blank">নার্সিং ও মিডওয়াইফারি অধিদপ্তর</a></li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.bnmc.gov.bd/" target="_blank">নার্সিং ও মিডওয়াইফারি কাউন্সিল</a></li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-external-link-alt" style="margin-right: 8px; color: var(--secondary-color);"></i><a href="http://www.mohfw.gov.bd/" target="_blank">স্বাস্থ্য ও পরিবার কল্যাণ মন্ত্রণালয়</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
     <footer id="footer" class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <h3>আমাদের সম্পর্কে</h3>
-                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা একটি পেশাজীবী সংগঠন যা নার্সদের অধিকার ও কল্যাণে নিবেদিত।</p>
+                <p>বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা </p>
             </div>
             <div class="footer-col">
                 <h3>গুরুত্বপূর্ণ ফাইল</h3>
                 <ul>
-                    <li><a href="#">গঠনতন্ত্র (PDF)</a></li>
-                    <li><a href="#">নীতিমালা (PDF)</a></li>
-                    <li><a href="#">বিএনএ কেন্দ্রীয় কমিটি</a></li>
+                    <li><a href="URL_OF_POLICY_PDF" target="_blank" class="pdf-link">নীতিমালা (পিডিএফ)</a></li>
+                    <li><a href="https://bna.org.bd/wp-content/uploads/2025/04/BNA-Constitution-1972.pdf" target="_blank" class="pdf-link">গঠনতন্ত্র (পিডিএফ)</a></li>
+                    <li><a href="http://www.bna.org.bd" target="_blank">বিএনএ কেন্দ্রীয় কমিটি</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>যোগাযোগ</h3>
-                <p><i class="fas fa-map-marker-alt"></i> প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
-                <p><i class="fas fa-envelope"></i> bna.mymdist@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
+                <p><i class="fas fa-map-marker-alt"></i> ঠিকানা: প্রশাসনিক ভবন (৩য় তলা), মমেক হাসপাতাল, ময়মনসিংহ।</p>
+                <p><i class="fas fa-envelope"></i> ইমেইল: bna.mymdist@gmail.com</p>
+                <p><i class="fas fa-phone"></i> ফোন: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
             </div>
         </div>
         <div class="footer-bottom">
-            © ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা
+            <p>© ২০২৫ | বাংলাদেশ নার্সেস এসোসিয়েশন (বিএনএ), ময়মনসিংহ জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // স্লাইডার ইনিশিয়ালাইজেশন
         new Swiper(".hero-slider", {
             loop: true,
-            autoplay: { delay: 4000 },
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         });
 
+        // বাংলা তারিখ ও সময় আপডেট
         function updateDateTime() {
             const now = new Date();
             const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-            const date = now.toLocaleDateString('bn-BD', dateOptions);
-            const time = now.toLocaleTimeString('bn-BD', timeOptions);
-            document.getElementById('date-time').innerHTML = `${date}<br>${time}`;
+            const dateString = now.toLocaleDateString('bn-BD', dateOptions);
+            const timeString = now.toLocaleTimeString('bn-BD', timeOptions);
+            const dateTimeDiv = document.getElementById('date-time');
+            if(dateTimeDiv) {
+               dateTimeDiv.innerHTML = `<span>${dateString}</span><br><span>${timeString}</span>`;
+            }
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
     </script>
-
 </body>
 </html>
