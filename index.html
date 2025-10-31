@@ -250,31 +250,48 @@
         .mobile-menu .dropdown.open .dropdown-menu {
             display: block;
         }
-/* 🔥 Gradient News Ticker Style */
+/* 📰 Fixed Gradient News Ticker Style */
 .news-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, #0066cc, #00bcd4, #4caf50);
+  background: linear-gradient(90deg, #004aad, #00bcd4, #4caf50, #ff9800);
+  background-size: 400% 400%;
   color: #fff;
   padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 4px;
-  animation: gradientMove 6s infinite linear;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  animation: gradientMove 8s infinite linear;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
 .news-ticker .ticker-title {
   margin-right: 10px;
   background: rgba(255, 255, 255, 0.2);
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
+
 .news-ticker marquee {
   flex: 1;
+  color: #fff;
 }
+
+/* পেজ কনটেন্ট নিচে ঠেলতে padding-top দিন */
+body {
+  padding-top: 40px;
+}
+
 
 
         /* --- Hero Slider --- */
@@ -583,16 +600,16 @@
         <div class="swiper-button-next" style="color: var(--accent-color);"></div>
         <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
-<!-- 🔥 Gradient News Ticker Start -->
+<!-- 📰 Fixed Gradient News Ticker Start -->
 <div class="news-ticker">
   <div class="ticker-title">📰 সর্বশেষ সংবাদ:</div>
   <marquee behavior="scroll" direction="left" scrollamount="5">
     🔹 নার্সিং ও মিডওয়াইফারি অধিদপ্তর বিলুপ্তির প্রতিবাদে ময়মনসিংহ জেলা বিএনএ এর মানব বন্ধন অনুষ্ঠিত।
     🔹 ময়মনসিংহ নার্সিং কলেজের নবীন বরণ অনুষ্ঠান সম্পন্ন |
-    
+
   </marquee>
 </div>
-<!-- 🔥 Gradient News Ticker End -->
+<!-- 📰 Fixed Gradient News Ticker End -->
 
     <div class="container main-wrapper">
         
@@ -860,6 +877,7 @@
     </script>
 </body>
 </html>
+
 
 
 
