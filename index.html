@@ -250,7 +250,7 @@
         .mobile-menu .dropdown.open .dropdown-menu {
             display: block;
         }
-/* 📰 Fixed Bottom Gradient News Ticker (Mobile Friendly) */
+/* 📰 Fixed Bottom Gradient News Ticker (Desktop + Mobile) */
 .news-ticker-bottom {
   position: fixed;
   bottom: 0;
@@ -293,6 +293,7 @@
 /* 📱 Mobile Optimization */
 @media (max-width: 600px) {
   .news-ticker-bottom {
+    bottom: 60px !important; /* 🔼 মোবাইল স্ক্রিনে একটু উপরে তোলা হয়েছে */
     flex-direction: column;
     align-items: flex-start;
     font-size: 14px;
@@ -907,6 +908,7 @@ header, nav {
     </script>
 </body>
 </html>
+
 
 
 
