@@ -259,17 +259,19 @@
   z-index: 999999;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   background: linear-gradient(90deg, #004aad, #00bcd4, #4caf50, #ff9800);
   background-size: 400% 400%;
   color: #fff;
-  padding: 8px 12px;
-  font-size: 16px;
-  font-weight: bold;
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 4px 8px; /* 🔹 বক্সটি ছোট */
+  font-size: 15px;
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   animation: gradientScroll 10s infinite linear;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 -1px 4px rgba(0,0,0,0.25);
   transition: bottom 0.3s ease;
+  height: 36px; /* 🔹 বক্সের উচ্চতা নির্দিষ্ট */
+  overflow: hidden;
 }
 
 @keyframes gradientScroll {
@@ -278,31 +280,39 @@
 }
 
 .news-ticker-bottom .ticker-title {
-  margin-right: 10px;
+  margin-right: 8px;
   background: rgba(255, 255, 255, 0.25);
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 2px 8px;
+  border-radius: 5px;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .news-ticker-bottom marquee {
   flex: 1;
   color: #fff;
   white-space: nowrap;
+  line-height: 32px;
 }
 
 /* 📱 Mobile Optimization */
 @media (max-width: 600px) {
   .news-ticker-bottom {
-    bottom: calc(env(safe-area-inset-bottom, 0) + 80px) !important; /* 🔼 Safe area fix */
-    font-size: 14px;
-    flex-direction: column;
-    align-items: flex-start;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 70px) !important; /* 🔼 Safe area fix */
+    font-size: 13px;
+    height: 32px; /* 🔹 আরও কমপ্যাক্ট */
+    padding: 2px 6px;
   }
   .news-ticker-bottom .ticker-title {
-    margin-bottom: 4px;
+    margin-right: 6px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  .news-ticker-bottom marquee {
+    line-height: 30px;
   }
 }
+
 
 
 
@@ -908,6 +918,7 @@ header, nav {
     </script>
 </body>
 </html>
+
 
 
 
