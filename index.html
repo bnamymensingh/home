@@ -250,15 +250,16 @@
         .mobile-menu .dropdown.open .dropdown-menu {
             display: block;
         }
-/* 📰 Fixed Bottom Gradient News Ticker */
+/* 📰 Fixed Bottom Gradient News Ticker (Mobile Friendly) */
 .news-ticker-bottom {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 99999;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: linear-gradient(90deg, #004aad, #00bcd4, #4caf50, #ff9800);
   background-size: 400% 400%;
   color: #fff;
@@ -267,7 +268,7 @@
   font-weight: bold;
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   animation: gradientScroll 10s infinite linear;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
 
 @keyframes gradientScroll {
@@ -280,12 +281,28 @@
   background: rgba(255, 255, 255, 0.2);
   padding: 4px 10px;
   border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .news-ticker-bottom marquee {
   flex: 1;
   color: #fff;
+  white-space: nowrap;
 }
+
+/* 📱 Mobile Optimization */
+@media (max-width: 600px) {
+  .news-ticker-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .news-ticker-bottom .ticker-title {
+    margin-bottom: 4px;
+  }
+}
+
 
 
 /* পেজ কনটেন্ট নিচে ঠেলতে padding-top দিন */
@@ -461,6 +478,16 @@ body {
                 text-align: center;
             }
         }
+        /* 🧭 Remove Top Space Above Navigation */
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header, nav {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
     </style>
 </head>
 <body>
@@ -880,6 +907,7 @@ body {
     </script>
 </body>
 </html>
+
 
 
 
