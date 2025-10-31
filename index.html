@@ -191,6 +191,31 @@
         .mobile-menu .dropdown.open .dropdown-menu {
             display: block;
         }
+/* 🔥 Gradient News Ticker Style */
+.news-ticker {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #0066cc, #00bcd4, #4caf50);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  animation: gradientMove 6s infinite linear;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.news-ticker .ticker-title {
+  margin-right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.news-ticker marquee {
+  flex: 1;
+}
 
 
         /* --- Hero Slider --- */
@@ -495,6 +520,17 @@
         <div class="swiper-button-next" style="color: var(--accent-color);"></div>
         <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
+<!-- 🔥 Gradient News Ticker Start -->
+<div class="news-ticker">
+  <div class="ticker-title">📰 সর্বশেষ সংবাদ:</div>
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    🔹 বিএসসি নার্সিং ভর্তি পরীক্ষার তারিখ ঘোষণা করা হয়েছে |
+    🔹 ময়মনসিংহ জেলার নার্সদের সম্মেলন আগামী সপ্তাহে |
+    🔹 বিএমডিসি রেজিস্ট্রেশন প্রক্রিয়া সহজতর করার উদ্যোগ |
+    🔹 নার্সিং শিক্ষার্থীদের নতুন ক্লাস রুটিন প্রকাশিত |
+  </marquee>
+</div>
+<!-- 🔥 Gradient News Ticker End -->
 
     <div class="container main-wrapper">
         
@@ -741,6 +777,7 @@
     </script>
 </body>
 </html>
+
 
 
 
