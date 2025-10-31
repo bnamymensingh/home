@@ -107,6 +107,65 @@
         }
         .navbar-desktop .dropdown-menu a { border-bottom: none; padding: 12px 20px; }
         .navbar-desktop .dropdown > a i { margin-left: 5px; font-size: 0.8em; }
+/* 💬 Modal Complaint Form */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.modal-content h2 {
+  color: #0077b6;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.modal-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.modal-content input, .modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.modal-content button {
+  background: linear-gradient(90deg, #0099cc, #00c853);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.modal-content button:hover {
+  opacity: 0.8;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+}
+.close:hover {
+  color: red;
+}
 
 
         /* --- Mobile Navigation (NEW) --- */
@@ -456,6 +515,8 @@
                 <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
                 <li><a href="#footer">যোগাযোগ</a></li>
                 <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
+                <li><a href="#complainModal" onclick="document.getElementById('complainModal').style.display='block'">পরামর্শ / অভিযোগ</a></li>
+
             </ul>
         </div>
     </nav>
@@ -504,6 +565,8 @@
                 <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
                 <li><a href="#footer">যোগাযোগ</a></li>
                 <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
+                <li><a href="#complainModal" onclick="document.getElementById('complainModal').style.display='block'">পরামর্শ / অভিযোগ</a></li>
+
             </ul>
         </div>
     </nav>
@@ -675,6 +738,27 @@
 </aside>
 
     </div>
+<!-- 💬 Suggestion/Complaint Modal Start -->
+<div id="complainModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('complainModal').style.display='none'">&times;</span>
+    <h2>পরামর্শ / অভিযোগ ফর্ম</h2>
+    <form action="https://formsubmit.co/bna.mymdist@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <label>আপনার নাম:</label>
+      <input type="text" name="name" placeholder="নাম লিখুন" required>
+
+      <label>ইমেইল:</label>
+      <input type="email" name="email" placeholder="ইমেইল লিখুন" required>
+
+      <label>বার্তা (পরামর্শ / অভিযোগ):</label>
+      <textarea name="message" rows="5" placeholder="এখানে লিখুন..." required></textarea>
+
+      <button type="submit">পাঠান</button>
+    </form>
+  </div>
+</div>
+<!-- 💬 Suggestion/Complaint Modal End -->
 
     <footer id="footer" class="main-footer">
         <div class="container footer-grid">
@@ -777,6 +861,7 @@
     </script>
 </body>
 </html>
+
 
 
 
