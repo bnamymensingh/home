@@ -250,10 +250,10 @@
         .mobile-menu .dropdown.open .dropdown-menu {
             display: block;
         }
-/* 📰 Fixed Gradient News Ticker Style */
-.news-ticker {
+/* 📰 Fixed Bottom Gradient News Ticker */
+.news-ticker-bottom {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
@@ -265,27 +265,28 @@
   padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  animation: gradientMove 8s infinite linear;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  animation: gradientScroll 10s infinite linear;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
 }
 
-@keyframes gradientMove {
+@keyframes gradientScroll {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
-.news-ticker .ticker-title {
+.news-ticker-bottom .ticker-title {
   margin-right: 10px;
   background: rgba(255, 255, 255, 0.2);
   padding: 4px 10px;
   border-radius: 6px;
 }
 
-.news-ticker marquee {
+.news-ticker-bottom marquee {
   flex: 1;
   color: #fff;
 }
+
 
 /* পেজ কনটেন্ট নিচে ঠেলতে padding-top দিন */
 body {
@@ -529,7 +530,19 @@ body {
                         <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
                     </ul>
                 </li>
-                <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
+                <!-- 🖼️ Gallery Section Start -->
+                    <section id="gallery" class="gallery-section">
+                      <h2>📸 গ্যালারি</h2>
+                      <p>আমাদের সংগঠনের বিভিন্ন কার্যক্রমের কিছু ছবি</p>
+                      <div class="gallery-grid">
+                        <!-- এখানে ছবি যোগ করুন -->
+                        <a href="https://i.ibb.co/zrP1dJ7/nurse1.jpg" target="_blank"><img src="https://i.ibb.co/zrP1dJ7/nurse1.jpg" alt="Event 1"></a>
+                        <a href="https://i.ibb.co/znzHgkD/nurse2.jpg" target="_blank"><img src="https://i.ibb.co/znzHgkD/nurse2.jpg" alt="Event 2"></a>
+                        <a href="https://i.ibb.co/MfS5HJ9/nurse3.jpg" target="_blank"><img src="https://i.ibb.co/MfS5HJ9/nurse3.jpg" alt="Event 3"></a>
+                        <a href="https://i.ibb.co/JqMqY2V/nurse4.jpg" target="_blank"><img src="https://i.ibb.co/JqMqY2V/nurse4.jpg" alt="Event 4"></a>
+                      </div>
+                    </section>
+                <!-- 🖼️ Gallery Section End -->
                 <li><a href="#footer">যোগাযোগ</a></li>
                 <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
                 <li><a href="#complainModal" onclick="document.getElementById('complainModal').style.display='block'">পরামর্শ / অভিযোগ</a></li>
@@ -579,7 +592,20 @@ body {
                         <li><a href="https://bna.org.bd/news-event/">সকল নোটিশ দেখুন</a></li>
                     </ul>
                 </li>
-                <li><a href="https://bna.org.bd/gallery/">গ্যালারি</a></li>
+              <li><a href="#gallery">গ্যালারি</a></li>
+                <!-- 🖼️ Gallery Section Start -->
+                    <section id="gallery" class="gallery-section">
+                      <h2>📸 গ্যালারি</h2>
+                      <p>আমাদের সংগঠনের বিভিন্ন কার্যক্রমের কিছু ছবি</p>
+                      <div class="gallery-grid">
+                        <!-- এখানে ছবি যোগ করুন -->
+                        <a href="https://i.ibb.co/zrP1dJ7/nurse1.jpg" target="_blank"><img src="https://i.ibb.co/zrP1dJ7/nurse1.jpg" alt="Event 1"></a>
+                        <a href="https://i.ibb.co/znzHgkD/nurse2.jpg" target="_blank"><img src="https://i.ibb.co/znzHgkD/nurse2.jpg" alt="Event 2"></a>
+                        <a href="https://i.ibb.co/MfS5HJ9/nurse3.jpg" target="_blank"><img src="https://i.ibb.co/MfS5HJ9/nurse3.jpg" alt="Event 3"></a>
+                        <a href="https://i.ibb.co/JqMqY2V/nurse4.jpg" target="_blank"><img src="https://i.ibb.co/JqMqY2V/nurse4.jpg" alt="Event 4"></a>
+                      </div>
+                    </section>
+                <!-- 🖼️ Gallery Section End -->
                 <li><a href="#footer">যোগাযোগ</a></li>
                 <li><a href="https://member.bna.org.bd/register" target="_blank" style="color: var(--accent-color); font-weight: 700;">সদস্য হোন</a></li>
                 <li><a href="#complainModal" onclick="document.getElementById('complainModal').style.display='block'">পরামর্শ / অভিযোগ</a></li>
@@ -600,16 +626,18 @@ body {
         <div class="swiper-button-next" style="color: var(--accent-color);"></div>
         <div class="swiper-button-prev" style="color: var(--accent-color);"></div>
     </div>
-<!-- 📰 Fixed Gradient News Ticker Start -->
-<div class="news-ticker">
+<!-- 📰 Fixed Bottom Gradient News Ticker Start -->
+<div class="news-ticker-bottom">
   <div class="ticker-title">📰 সর্বশেষ সংবাদ:</div>
   <marquee behavior="scroll" direction="left" scrollamount="5">
-    🔹 নার্সিং ও মিডওয়াইফারি অধিদপ্তর বিলুপ্তির প্রতিবাদে ময়মনসিংহ জেলা বিএনএ এর মানব বন্ধন অনুষ্ঠিত।
+    🔹 নার্সিং ও মিডওয়াইফারি অধিদপ্তর বিলুপ্তির প্রতিবাদে ময়মনসিংহ জেলা বিএনএ এর মানব বন্ধন অনুষ্ঠিত |
+    🔹 নার্সিং ও মিডওয়াইফারি অধিদপ্তর বিলুপ্তির প্রতিবাদে কেন্দ্রীয় বিএনএ সহ সারা দেশের জেলা বিএনএ এর মানব বন্ধন অনুষ্ঠিত |
     🔹 ময়মনসিংহ নার্সিং কলেজের নবীন বরণ অনুষ্ঠান সম্পন্ন |
 
   </marquee>
 </div>
-<!-- 📰 Fixed Gradient News Ticker End -->
+<!-- 📰 Fixed Bottom Gradient News Ticker End -->
+
 
     <div class="container main-wrapper">
         
@@ -877,6 +905,7 @@ body {
     </script>
 </body>
 </html>
+
 
 
 
